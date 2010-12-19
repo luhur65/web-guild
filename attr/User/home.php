@@ -88,9 +88,9 @@ $id = $detail['guild_id'];
     ?>
 
   <div class="mx-auto">
-    <div class="card shadow mb-4">
+    <div class="card bg-white mb-4">
       <!-- Card Header - Dropdown -->
-      <div class="card-header border-0 bg-white py-3 d-flex flex-row align-items-center justify-content-between mb-0">
+      <div class="card-header border-0 bg-white d-flex flex-row align-items-center justify-content-between mb-0">
         <h6 class="m-0 font-weight-bold text-primary">
           <a href="<?= base_url; ?>/assets/img/user-icon/<?= $p['foto_profil']?>" class="example-image-link"
             data-lightbox="<?= $p['foto_profil']?>" data-title="<?= $p['full_name'] ?>">
@@ -188,14 +188,14 @@ $id = $detail['guild_id'];
 
         <!-- like , comment -->
         <?php if($idLikers === $sw['id_user_like']): ?>
-        <a href="#" class="btn btn-outline-light btn-sm text-danger like-button" data-id="<?= $p['id_post']; ?>">
+        <a href="#" class="btn btn-outline-light btn-sm mb-0 countLike text-danger like-button" data-id="<?= $p['id_post']; ?>">
           <?php if($like > 0) : ?>
           <i class="fa fa-heart fa-fw" aria-hidden="true"></i> <?= $like; ?> </a>
         <?php else : ?>
         <i class="fa fa-heart fa-fw" aria-hidden="true"></i> Like </a>
         <?php endif; ?>
         <?php elseif($idLikers !== $sw['id_user_like']): ?>
-        <a href="#" class="btn btn-light btn-sm text-dark like-button" data-id="<?= $p['id_post']; ?>">
+        <a href="#" class="btn btn-light btn-sm mb-0 text-dark like-button" data-id="<?= $p['id_post']; ?>">
           <?php if($like > 0) : ?>
           <i class="fa fa-heart fa-fw" aria-hidden="true"></i> <?= $like; ?> </a>
         <?php else : ?>
@@ -204,7 +204,7 @@ $id = $detail['guild_id'];
         <?php endif; ?>
 
 
-        <a href="" class="btn btn-link text-primary btn-sm"><i class="fa fa-comments fa-fw" aria-hidden="true"></i>
+        <a href="" class="btn btn-link text-primary mb-0 btn-sm"><i class="fa fa-comments fa-fw" aria-hidden="true"></i>
           Comment</a>
         <!-- akhir dari like, comment -->
       </div>
