@@ -613,7 +613,7 @@ function sendMyPost($data)
 
     $idUser = $data['idUser'];
     $idGuild = $data['idGuild'];
-    $post = htmlspecialchars(strip_tags(stripslashes($data['post'])),ENT_QUOTES);
+    $post = htmlspecialchars(strip_tags($data['post']),ENT_QUOTES);
     $date = date("Y-m-d H:i:s a");
 
     mysqli_query($conn, "INSERT INTO `guild_post`(`id_post`, `post`, `user_id`, `id_guild`, `post_date`) VALUES (null,'$post','$idUser','$idGuild','$date')");
@@ -643,7 +643,7 @@ function editPost($data)
     $url = $_GET['data'];
 
     $id = base64_decode($url);
-    $post = htmlspecialchars(stripslashes($data['post']),ENT_QUOTES);
+    $post = htmlspecialchars($data['post'],ENT_QUOTES);
 
     mysqli_query($conn, "UPDATE `guild_post` SET `post`='$post' WHERE id_post = '$id'");
 
