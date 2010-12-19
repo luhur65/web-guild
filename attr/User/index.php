@@ -16,9 +16,6 @@ require_once '../temp/auth_header.php';
            case 'listMail':
              require_once 'maillist.php';
              break;
-           case 'mail':
-             require_once 'chat.php';
-             break;
            case 'readMail':
              require_once 'readMail.php';
              break;
