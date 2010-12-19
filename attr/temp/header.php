@@ -11,7 +11,7 @@
   <meta name="description" content="Login & Register To Join">
   <meta name="author" content="dhrm_strmng">
 
-  <title>GuildRoom - Chatting</title>
+  <title>Awesome Website - Chatting</title>
   <link rel="icon" href="<?= base_url ?>/assets/img/favicon.png">
 
   <!-- Custom fonts for this template-->
