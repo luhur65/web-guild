@@ -191,14 +191,14 @@ $id = $detail['guild_id'];
         <a href="#" class="btn btn-outline-light btn-sm mb-0 countLike text-danger like-button"
           data-id="<?= $p['id_post']; ?>">
           <?php if($like > 0) : ?>
-          <i class="fa fa-heart fa-fw" aria-hidden="true"></i> <?= $like; ?> </a>
+          <i class="fa fa-heart fa-fw" aria-hidden="true"></i> <?= $like; ?> Like</a>
         <?php else : ?>
         <i class="fa fa-heart fa-fw" aria-hidden="true"></i> Like </a>
         <?php endif; ?>
         <?php elseif($idLikers !== $sw['id_user_like']): ?>
         <a href="#" class="btn btn-light btn-sm mb-0 text-dark like-button" data-id="<?= $p['id_post']; ?>">
           <?php if($like > 0) : ?>
-          <i class="fa fa-heart fa-fw" aria-hidden="true"></i> <?= $like; ?> </a>
+          <i class="fa fa-heart fa-fw" aria-hidden="true"></i> <?= $like; ?> Like</a>
         <?php else : ?>
         <i class="fa fa-heart fa-fw" aria-hidden="true"></i> Like </a>
         <?php endif; ?>
