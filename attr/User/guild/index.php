@@ -111,7 +111,7 @@ $queryAdmin = query($admin);
     $user = $_SESSION['log_'];
     
     // User Mengupload Postingan
-    $arrayUser = "SELECT * FROM guild_info_member JOIN guild_center On guild_center.id_guild = guild_info_member.guild_id WHERE guild_info_member.guild_id = '$id' and guild_info_member.username = '$user'";
+    $arrayUser = "SELECT * FROM guild_info_member JOIN guild_center On guild_center.id_guild = guild_info_member.guild_id WHERE guild_info_member.guild_id = '$id' and guild_info_member.username = '$user' or guild_info_member.email = '$user'";
     $viewUser = query($arrayUser);
 
     // Jika tombol Kirim Diklik

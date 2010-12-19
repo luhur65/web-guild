@@ -326,9 +326,8 @@ function enable($data)
     global $conn;
 
     $active = 1;
-    $id = $_GET['active'];
 
-    $query = "UPDATE sub_menu SET is_aktif = '$active' WHERE id = '$id'";
+    $query = "UPDATE sub_menu SET is_aktif = '$active' WHERE id = '$data'";
 
     mysqli_query($conn,$query);
 
@@ -421,7 +420,7 @@ function newGuild($data)
 
 }
 
-// Function Buat PAssword Jika Guildnya Adalah Private
+// Function Buat Password Jika Guildnya Adalah Private
 function setPassword($data)
 {
     global $conn;

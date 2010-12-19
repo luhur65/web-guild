@@ -85,9 +85,9 @@ if (isset($_POST['tambah'])) {
             </td>
             <td>
                 <?php if($sb['is_aktif'] > 0) :?>
-                <a href="blockedSubmenu?block=<?= $sb['id'] ?>" class="btn btn-danger btn-sm">Unactive</a>
+                <a href="#block" class="btn btn-danger btn-sm tombolNonAktifkanSubMenu" data-block="<?= $sb['id'] ?>">Unactive</a>
                 <?php elseif($sb['is_aktif'] < 1) :?>
-                <a href="activeSubmenu?active=<?= $sb['id'] ?>" class="btn btn-primary btn-sm">activated</a>
+                <a href="#aktif" class="btn btn-primary btn-sm tombolAktifkanSubMenu" data-active="<?= $sb['id'] ?>">activated</a>
                 <?php endif ?>
             </td>
         </tr>
