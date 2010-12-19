@@ -153,7 +153,7 @@ $id = $detail['guild_id'];
       </div>
       <!-- Card Body -->
       <div class="card-body">
-        <a href="?mod=seeMore&data=<?= base64_encode($p['id_post']) ?>" class="text-dark">
+
         <p class="small badge badge-info">
           <?= $p['full_name']; ?>
         </p>
@@ -167,10 +167,9 @@ $id = $detail['guild_id'];
             <?php endif ?>
           </p>
         <!-- Tombol like , comment -->
-        <a href="" class="btn btn-link btn-sm"><i class="fa fa-thumbs-up fa-fw" aria-hidden="true"></i> Like</a>
-        <a href="" class="btn btn-link btn-sm"><i class="fa fa-comments fa-fw" aria-hidden="true"></i> Comment</a>
+        <a href="" class="btn btn-light btn-sm text-primary"><i class="fa fa-thumbs-up fa-fw" aria-hidden="true"></i> Like</a>
+        <a href="" class="btn btn-light btn-sm text-primary"><i class="fa fa-comments fa-fw" aria-hidden="true"></i> Comment</a>
 
-        </a>
       </div>
     </div>
   </div>

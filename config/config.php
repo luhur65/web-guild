@@ -29,8 +29,8 @@ function daftarAkunBaru($data)
 {
     global $conn;
 
-    $namaLengkap = htmlspecialchars($data['FullName']); // Nama Lengkap
-    $username = htmlspecialchars(strtolower(stripslashes($data['username']))); // Username
+    $namaLengkap = htmlspecialchars($data['FullName'],ENT_QUOTES); // Nama Lengkap
+    $username = htmlspecialchars(strtolower(stripslashes($data['username'])),ENT_QUOTES); // Username
     $email = addslashes(stripslashes(strip_tags($data['InputEmail']))); // Email User
     $password1 = mysqli_real_escape_string($conn, $data['main_pass']); // Password Utama
     $password2 = mysqli_real_escape_string($conn, $data['RepeatPassword']); // Konfirmasi Password
@@ -39,7 +39,7 @@ function daftarAkunBaru($data)
     $aktif = 1; // Nilai Aktif
     $profil = '';
     $gender = $data['gender'];
-    $tglLahir = htmlspecialchars($data['tglLahir']);
+    $tglLahir = htmlspecialchars($data['tglLahir'],ENT_QUOTES);
 
     // Cek Username 
     // Sudah Ada Atau Belum ???
@@ -81,7 +81,7 @@ function daftarAkunBaru($data)
 
 }
 
-// Function Message
+// Function Message notif
 function showMessage($tipe,$aksi,$datapesan)
 {
     $message = '<div class="alert alert-'. $tipe .' alert-dismissible fade show" role="alert">
@@ -95,7 +95,7 @@ function showMessage($tipe,$aksi,$datapesan)
     return $message;
 }
 
-// Function Field Kosong
+// Function alert javascript
 function alertPopUp($data,$tujuan)
 {
     $alert = "<script>
