@@ -173,9 +173,11 @@ $gl = mysqli_fetch_assoc($saya);
             Laporkan </a>
 
         <?php if($detail['id_role'] !== '2') : ?>
+        <?php if($us['id_role'] === '2') : ?>
         <a href="<?= base_url; ?>/attr/Admin/?mod=blockByAdmin&user=<?= base64_encode($us['id_user']); ?>"
             class="btn btn-danger mr-3 btn-sm rounded mb-2 mt-2"><i class="fa fa-ban" aria-hidden="true"></i> Blokir
         </a>
+        <?php endif; ?>
         <?php endif; ?>
 
     </div>

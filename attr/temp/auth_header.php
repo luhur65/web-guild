@@ -21,6 +21,12 @@ $query    = mysqli_query($conn,$data_query);
 // Pecah Data User Yg Login
 $detail = mysqli_fetch_assoc($query);
 
+// Cek Apakah Akun aktif Atau belum ?
+if ($detail['is_aktif'] < "1") {
+    echo alertPopUp('Akun Anda Telah Diblokir Admin','../auth_out');    
+
+    return false;
+}
 
 // Ambil Data Yg Diperlukan Saja
 $guild_saya =  $detail['guild_id'];
