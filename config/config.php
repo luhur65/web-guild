@@ -1,7 +1,7 @@
 <?php 
 
 // Link Utama
-define('base_url',"http://localhost/tugasphp/guild");
+define('base_url',"http://localhost/Praktek/web-guild");
 
 // Konekesi Ke Database 
 $hostname = 'localhost';
