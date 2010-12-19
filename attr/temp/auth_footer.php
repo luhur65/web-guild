@@ -23,21 +23,8 @@
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url;?>/assets/vendor/lightbox/js/lightbox-plus-jquery.min.js"></script>
 
-<script>
-		$('.custom-file-input').on('change', function() {
-		let fileName = $(this).val().split('\\').pop();
-		$(this).next('.custom-file-label').addClass("selected").html(fileName);
-		});
-
-    $(document).ready(function() {
-            $('.alert-dismissible').ready(function() {
-                $('.close').on('click', function() {
-                    document.location.href = '?mod=home';
-                });
-            });
-        });
-
-</script>
+<!-- my script -->
+<script src="<?= base_url;?>/assets/js/script.js"></script>
 
 </body>
 

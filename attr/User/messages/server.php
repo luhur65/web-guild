@@ -14,7 +14,7 @@
  */
 
 // set php runtime to unlimited
-set_time_limit(0);
+// set_time_limit(0);
 
 // where does the data come from ? In real world this would be a SQL query or something
 $data_source_file = 'data.json';

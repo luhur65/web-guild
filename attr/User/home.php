@@ -183,35 +183,30 @@ $id = $detail['guild_id'];
           $show = mysqli_query($conn, $dataLikers);
           $sw = mysqli_fetch_assoc($show);
 
-          // nama user yg like 
-          // $nameUserLike = "SELECT full_name FROM data_like_post JOIN guild_info_member On guild_info_member.id_user = data_like_post.id_user_like WHERE id_post_like = '$idPost'";
-          // $showName = query($nameUserLike); 
-
           ?>
 
 
         <!-- like , comment -->
         <?php if($idLikers === $sw['id_user_like']): ?>
-        <a href="?mod=likePost&amp;like=<?= base64_encode($p['id_post']) ?>"
-          class="btn btn-outline-light btn-sm text-danger">
+        <a href="#" class="btn btn-outline-light btn-sm text-danger like-button" data-id="<?= $p['id_post']; ?>">
           <?php if($like > 0) : ?>
-            <i class="fa fa-heart fa-fw" aria-hidden="true"></i> <?= $like; ?> </a>
-            <?php else : ?>
-              <i class="fa fa-heart fa-fw" aria-hidden="true"></i> Like </a>
-          <?php endif; ?>
+          <i class="fa fa-heart fa-fw" aria-hidden="true"></i> <?= $like; ?> </a>
+        <?php else : ?>
+        <i class="fa fa-heart fa-fw" aria-hidden="true"></i> Like </a>
+        <?php endif; ?>
         <?php elseif($idLikers !== $sw['id_user_like']): ?>
-        <a href="?mod=likePost&amp;like=<?= base64_encode($p['id_post']) ?>" class="btn btn-light btn-sm text-dark">
-        <?php if($like > 0) : ?>
-            <i class="fa fa-heart fa-fw" aria-hidden="true"></i> <?= $like; ?> </a>
-            <?php else : ?>
-              <i class="fa fa-heart fa-fw" aria-hidden="true"></i> Like </a>
-          <?php endif; ?>
+        <a href="#" class="btn btn-light btn-sm text-dark like-button" data-id="<?= $p['id_post']; ?>">
+          <?php if($like > 0) : ?>
+          <i class="fa fa-heart fa-fw" aria-hidden="true"></i> <?= $like; ?> </a>
+        <?php else : ?>
+        <i class="fa fa-heart fa-fw" aria-hidden="true"></i> Like </a>
+        <?php endif; ?>
         <?php endif; ?>
 
 
         <a href="" class="btn btn-link text-primary btn-sm"><i class="fa fa-comments fa-fw" aria-hidden="true"></i>
           Comment</a>
-            <!-- akhir dari like, comment -->
+        <!-- akhir dari like, comment -->
       </div>
     </div>
   </div>

@@ -738,7 +738,7 @@ function likePost()
     global $conn;
 
     // ambil id postingan yg dilike 
-    $idPost = base64_decode($_GET['like']);
+    $idPost = $_GET['like'];
 
     // user yg like postingan
     $userLike = $_SESSION['log_'];
