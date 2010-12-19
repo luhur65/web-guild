@@ -744,5 +744,20 @@ function replyChat($data)
     return mysqli_affected_rows($conn);
 }
 
+// Funtion Log-in Activity
+function logActivity($session, $text) 
+{
+
+    // Buka file
+    $file = fopen('log.txt', 'a+');
+
+    // tulisan log
+    $log = "[".date('d/M/Y')."][".date('H : i : s a')."] ". $session ." ". $text ."[Done]\n";
+
+    // Tulis ke dalam file log.txt
+    fwrite($file, $log);
+
+    fclose($file);
+}
 
 ?>

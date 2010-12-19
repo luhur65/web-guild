@@ -159,9 +159,8 @@ $submenu = query("SELECT * FROM `sub_menu` ");
 <div class="col-lg-4 mb-3 mt-3">
 <div class="card shadow border-left-success">
   <div class="card-body">
-    <div class="h3 mb-4 text-gray-800"></div> <hr class="bg-dark">
+    <div class="h3 mb-4 text-gray-800">Owner</div> <hr class="bg-dark">
       <!-- Isi Konten  -->
-      
   </div>
 </div>
 </div>

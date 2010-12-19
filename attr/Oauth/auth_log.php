@@ -33,22 +33,21 @@ if (isset($_POST['log_'])) {
             // cek role akun
             if ($row['role'] == "1") {
                 $_SESSION['log_'] = $username;
-
+                logActivity($_SESSION['log_'],"Melakukan Login Di WebGuild");
                 header("Location: ". base_url ."/attr/Admin");
                 exit;
             } else {
                 ($row['role'] == "2");
                 $_SESSION['log_'] = $username;
-
+                logActivity($_SESSION['log_'],"Melakukan Login Di WebGuild");
                 header("Location:  ". base_url ."/attr/User");
                 exit;
             }
         }
     } 
 
+    // Login Gagal
     $error = true;
-    echo mysqli_error($conn);
-
 
     // Jika Login Dengan Username
     if (mysqli_num_rows($loginWithEmail) === 1) {
@@ -65,19 +64,18 @@ if (isset($_POST['log_'])) {
             // cek role akun
             if ($akunEmail['role'] == "1") {
                 $_SESSION['log_'] = $username;
-
+                logActivity($_SESSION['log_'],"Melakukan Login Di WebGuild");
                 header("Location: ". base_url ."/attr/Admin");
                 exit;
-            } else {
-                ($akunEmail['role'] == "2");
+            } elseif($akunEmail['role'] == "2") {
                 $_SESSION['log_'] = $username;
-
+                logActivity($_SESSION['log_'],"Melakukan Login Di WebGuild");
                 header("Location:  ". base_url ."/attr/User");
                 exit;
             }
         }
     } 
 
+    // Login Gagal
     $error = true;
-    echo mysqli_error($conn);
 }
