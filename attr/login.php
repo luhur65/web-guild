@@ -70,7 +70,7 @@ if (isset($_SESSION['log_'])) {
                   <div class="form-group mb-3">
                     <div class="input-group input-group-alternative">
                       <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                        <span class="input-group-text"><i class="fa fa-user-circle fa-fw" aria-hidden="true"></i>
                       </div>
                       <input class="form-control" placeholder="Email Address Or Nickname" type="text" name="username"
                         required autocomplete="off" autofocus>
