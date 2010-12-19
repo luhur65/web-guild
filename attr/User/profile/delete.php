@@ -2,6 +2,14 @@
 
 $id = base64_decode($_GET['user']);
 
+// cek jika yg mengakses halaman ini bukan pemilik akun yg sebenarnya 
+if($detail['id_user'] !== $id){
+    echo "<script> document.location.href='?mod=home'; </script>";
+
+    exit();
+    return false;
+} 
+
 // jika ditekan tombol delete
 if(isset($_POST['verify'])){
 
