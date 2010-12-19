@@ -12,11 +12,11 @@
   <meta name="author" content="dhrm_strmng">
 
   <title>GuildRoom - Chatting</title>
-  <link rel="icon" href="<?= base_url ?>/assets/img/favicon.jpg">
+  <link rel="icon" href="<?= base_url ?>/assets/img/favicon.png">
 
   <!-- Custom fonts for this template-->
   <link href="<?= base_url;?>/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600&amp;display=swap" rel="stylesheet">
 
   <!-- Custom styles for this template-->
   <link href="<?= base_url;?>/assets/css/sb-admin-2.css" rel="stylesheet">

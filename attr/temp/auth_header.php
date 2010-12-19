@@ -49,13 +49,13 @@ $takeOneGuild = query($oneGuild);
 
   <title>Beranda Saya</title>
 
-  <link rel="icon" href="<?= base_url ?>/assets/img/favicon.jpg">
+  <link rel="icon" href="<?= base_url ?>/assets/img/favicon.png">
 
   <!-- Custom fonts for this template-->
   <link
     href="<?= base_url;?>/assets/vendor/fontawesome-free/css/all.min.css"
     rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600&amp;display=swap" rel="stylesheet">
   <link
     href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
     rel="stylesheet">
