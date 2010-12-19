@@ -729,13 +729,6 @@ function likePost()
     // ambil id postingan yg dilike 
     $idPost = base64_decode($_GET['like']);
 
-    // ambil data count like di database
-    $dataLike = "SELECT * FROM `guild_post`  JOIN `data_like_post` ON guild_post.id_post = data_like_post.id_post_like WHERE `id_post` = '$idPost' Order By id_like DESC ";
-    $queryDataLike = mysqli_query($conn, $dataLike);
-    $post = mysqli_fetch_assoc($queryDataLike);
-    
-    // $likeAwal = $post['count_like'];
-
     // user yg like postingan
     $userLike = $_SESSION['log_'];
     $dataUser = "SELECT id_user FROM guild_info_member WHERE username = '$userLike' or email = '$userLike'";
@@ -743,31 +736,42 @@ function likePost()
     $user = mysqli_fetch_assoc($queryDataUser);
     $idUserLike = $user['id_user'];
 
+    // ambil data count like di database
+    $dataLike = "SELECT * FROM `guild_post`  JOIN `data_like_post` ON guild_post.id_post = data_like_post.id_post_like WHERE `id_post` = '$idPost' And id_user_like = '$idUserLike' Order By id_like DESC";
+    $queryDataLike = mysqli_query($conn, $dataLike);
+
     // jml like 
     $like = 1;
-    // $like += $likeAwal;
 
-    // echo $post['id_user_like'];
-    // echo $idUserLike;
+    if(mysqli_num_rows($queryDataLike) > 1) {
 
-    // cek jika ada user yg like lebih dari 2x 
-    if($idUserLike === $post['id_user_like']){
-
-        $idLike = $post['id_like'];
-
-        $query = "DELETE FROM `data_like_post` WHERE id_user_like = '$idUserLike' and id_like = '$idLike'";
-        mysqli_query($conn, $query);
-
-        // echo alertPopUp('Tidak Bisa Membatalkan Like','?mod=home');
+        $id = mysqli_fetch_assoc($queryDataLike);
+        $idLike = $id['id_like'];
         
-        // return false;
+        // cek jika ada user yg like lebih dari 2x 
+        if ($idUserLike === $id['id_user_like']) {
 
-    } elseif ($idUserLike !== $post['id_user_like']) {
+            $query = "DELETE FROM `data_like_post` WHERE id_user_like = '$idUserLike' and id_like = '$idLike'";
+            mysqli_query($conn, $query);
+
+        }  elseif($idUserLike !== $id['id_user_like']) {
+
+            $query = "INSERT INTO `data_like_post`(`id_post_like`, `id_user_like`, `count_like`) VALUES ('$idPost','$idUserLike','$like')";
+            mysqli_query($conn, $query);
+            
+            return mysqli_affected_rows($conn);
+        }
+
+    } else {
+        $id = mysqli_fetch_assoc($queryDataLike);
+        if($idUserLike !== $id['id_user_like']) {
+
+            $query = "INSERT INTO `data_like_post`(`id_post_like`, `id_user_like`, `count_like`) VALUES ('$idPost','$idUserLike','$like')";
+            mysqli_query($conn, $query);
+            
+            return mysqli_affected_rows($conn);
+        }
     
-        $query = "INSERT INTO `data_like_post`(`id_post_like`, `id_user_like`, `count_like`) VALUES ('$idPost','$idUserLike','$like')";
-        mysqli_query($conn, $query);
-    
-        return mysqli_affected_rows($conn);
     }
     
 }
