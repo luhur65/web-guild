@@ -743,37 +743,49 @@ function likePost()
     // jml like 
     $like = 1;
 
-    if(mysqli_num_rows($queryDataLike) > 1) {
+    if(mysqli_num_rows($queryDataLike) > 0) {
 
         $id = mysqli_fetch_assoc($queryDataLike);
         $idLike = $id['id_like'];
         
-        // cek jika ada user yg like lebih dari 2x 
+        // cek jika ada user yg like lebih dari 2x di postingan yg sama
         if ($idUserLike === $id['id_user_like']) {
 
+            // membatalkan like jika user sudah pernah memberikan like di postingan yg sama
             $query = "DELETE FROM `data_like_post` WHERE id_user_like = '$idUserLike' and id_like = '$idLike'";
             mysqli_query($conn, $query);
 
-        }  elseif($idUserLike !== $id['id_user_like']) {
-
-            $query = "INSERT INTO `data_like_post`(`id_post_like`, `id_user_like`, `count_like`) VALUES ('$idPost','$idUserLike','$like')";
-            mysqli_query($conn, $query);
-            
-            return mysqli_affected_rows($conn);
-        }
+        }  
 
     } else {
+        // membuat notifikasi 
         $id = mysqli_fetch_assoc($queryDataLike);
+
         if($idUserLike !== $id['id_user_like']) {
 
             $query = "INSERT INTO `data_like_post`(`id_post_like`, `id_user_like`, `count_like`) VALUES ('$idPost','$idUserLike','$like')";
+
             mysqli_query($conn, $query);
-            
+
             return mysqli_affected_rows($conn);
         }
     
     }
     
+}
+
+// Function notification
+function notify($pesan, $to, $from)
+{
+    global $conn;
+
+    // waktu dikirim notify
+    $time = date('H:i:s');
+
+    $query = "INSERT INTO `notif`(`id_notif`, `pesan_notif`, `to_user`, `from_user`, `jam_kirim`) VALUES (null, '$pesan', '$to', '$from', '$time')";
+
+    mysqli_query($conn, $query);
+
 }
 
 // Funtion Log-in Activity
