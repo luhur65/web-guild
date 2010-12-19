@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
     </div>
     <div class="form-group">
       <label for="bio">Biografi</label>
-      <textarea class="form-control" name="bio" id="bio" rows="3" required><?= $detail['biografi']; ?>
+      <textarea class="form-control" name="bio" id="bio" rows="3" required><?= str_replace("<br />", "", trim($detail['biografi'])); ?>
       </textarea>
     </div>
     <div class="form-group mb-3 mt-4">
