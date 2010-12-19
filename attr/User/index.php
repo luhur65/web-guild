@@ -7,7 +7,7 @@ require_once '../temp/auth_header.php';
   <?php 
   if (isset($_SESSION['log_'])) {
       if (isset($_GET['mod'])) {
-         $mod = $_GET['mod'];
+         $mod = htmlspecialchars(addslashes(strip_tags($_GET['mod'])),ENT_QUOTES);
 
          switch ($mod) {
            case 'sendMessage':
