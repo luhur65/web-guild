@@ -5,8 +5,10 @@
 $friends = "SELECT * FROM guild_info_member";
 
 if (isset($_POST['ok'])) {
+
+    $search = htmlspecialchars(addslashes(strip_tags($_POST['search'])),ENT_QUOTES);
     
-    $friends = inviteFriend($_POST['search']);
+    $friends = inviteFriend($search);
 }
 
 ?>
