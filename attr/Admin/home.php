@@ -18,6 +18,7 @@ $menu = query("SELECT * FROM `menu` ");
 // Menghitung Jumlah Submenu 
 $submenu = query("SELECT * FROM `sub_menu` ");
 
+
 ?>
 <div class="row">
   <!-- Jumlah Anggota  -->
@@ -103,7 +104,7 @@ $submenu = query("SELECT * FROM `sub_menu` ");
 <div class="row">
 
 <!-- List Anggota -->
-<div class="col-lg-8 mb-3 mt-3">
+<div class="col-lg mb-3 mt-3">
 <div class="card mb-4 shadow rounded border-left-primary shadow h-100">
   <div class="card-body">
     <div class="h3 mb-4 text-gray-800">List Anggota</div> <hr class="bg-dark">
@@ -113,7 +114,7 @@ $submenu = query("SELECT * FROM `sub_menu` ");
           <th>Foto Profil</th>
           <th>Nama Lengkap</th>
           <th>Status Akun</th>
-          <th>Action</th>
+          <th>Blokir/Aktifkan</th>
           <th>More Info Details...</th>
         </tr>
       </thead>
@@ -135,11 +136,11 @@ $submenu = query("SELECT * FROM `sub_menu` ");
           <td>
             <?php if($a['is_aktif'] > 0) : ?>
             <a href="?mod=blockByAdmin&amp;user=<?= base64_encode($a['id_user']) ?>" class="btn btn-danger btn-sm rounded">
-              <i class="fa fa-ban fa-fw" aria-hidden="true"></i> Blokir Akun
+              <i class="fa fa-ban fa-fw" aria-hidden="true"></i> Blokir
             </a>
             <?php elseif($a['is_aktif'] < 1) : ?>
             <a href="?mod=openAccess&amp;user=<?= base64_encode($a['id_user']) ?>" class="btn btn-primary btn-sm rounded">
-              <i class="fas fa-user-check fa-fw"></i> Aktifkan Akun
+              <i class="fas fa-user-check fa-fw"></i> Aktifkan
             </a>
             <?php endif; ?>
           </td>
@@ -158,8 +159,9 @@ $submenu = query("SELECT * FROM `sub_menu` ");
 <div class="col-lg-4 mb-3 mt-3">
 <div class="card shadow border-left-success">
   <div class="card-body">
-    <div class="h3 mb-4 text-gray-800">List Guild</div> <hr class="bg-dark">
+    <div class="h3 mb-4 text-gray-800"></div> <hr class="bg-dark">
       <!-- Isi Konten  -->
+      
   </div>
 </div>
 </div>

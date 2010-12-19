@@ -21,6 +21,7 @@ $query    = mysqli_query($conn,$data_query);
 // Pecah Data User Yg Login
 $detail = mysqli_fetch_assoc($query);
 
+
 // Ambil Data Yg Diperlukan Saja
 $guild_saya =  $detail['guild_id'];
 

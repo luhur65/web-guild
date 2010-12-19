@@ -10,7 +10,7 @@ $guildSaya = mysqli_query($conn,$dataGuild);
 $gl = mysqli_fetch_assoc($guildSaya);
 
 // Jika Guild Di block oleh Admin
-if ($gl['guild_aktif'] < 1) {
+if ($gl['guild_aktif'] === '0') {
     echo showMessage('danger','Blocked','Kami Memblokir Guild Ini Untuk Sementara Waktu Sampai Masa Waktu Yg Telah Kami Tentukan Sendiri!!, Terima Kasih');
 
     return false;
@@ -27,11 +27,11 @@ $anggota = count(query($dataGuild));
 
 // jika belum join guild 
 if (!$gl) {
-    echo '<div class="alert alert-danger" role="alert">
-      <h3 class="alert-heading font-weight-bold">Not Found</h3>
-      <p>Anda Belum Memiliki Guild!</p>
-      <p class="mb-0">Silakan Join Atau Create Guild Dulu!</p>
-    </div>';
+  echo '<div class="alert alert-danger" role="alert">
+        <h3 class="alert-heading font-weight-bold">Not Found</h3>
+        <p>Anda Belum Memiliki Guild!</p>
+        <p class="mb-0">Silakan Join Atau Create Guild Dulu!</p>
+      </div>';
 
     return false;
 }

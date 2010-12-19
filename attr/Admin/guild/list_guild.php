@@ -22,10 +22,10 @@ $query    = query($data_query);
 <div class="row">
   <?php foreach($query as $listGuild) : ?>
   <div class="col-lg-3">
-    <div class="card mb-5 text-center">
+    <div class="card mb-5">
       <img class="card-img-top img-fluid" src="<?= base_url; ?>/assets/img/guild_img/<?= $listGuild['guild_img']; ?>"
         alt="">
-      <div class="card-body">
+      <div class="card-body text-center">
         <h3 class="card-title bg-gradient rounded shadow p-3 text-dark text-uppercase small font-weight-bold">
           <?= $listGuild['guild_name'] ?></h3>
         <?php if($listGuild['guild_aktif'] < 1): ?>
@@ -36,47 +36,44 @@ $query    = query($data_query);
 
         <?php endif ?>
         <p class="card-text"><?= $listGuild['guild_info'] ?></p>
+
+        <?php if($listGuild['guild_post'] === 'Public'): ?>
+          
+          <span class="text-success">Group <?= $listGuild['guild_post']; ?></span> <br>
+
+          <a href="<?= base_url; ?>/attr/User/?mod=viewUser&q=<?= base64_encode($listGuild['full_name']) ?>" class="btn btn-link btn-sm rounded"><i class="fas fa-user-shield fa-fw"></i> <?= $listGuild['full_name']; ?></a>
+
+          <?php elseif($listGuild['guild_post'] === 'Private'): ?>
+
+            <span class="text-danger">Group <?= $listGuild['guild_post']; ?></span> <br>
+
+            <a href="<?= base_url; ?>/attr/User/?mod=viewUser&q=<?= base64_encode($listGuild['full_name']) ?>" class="btn btn-link btn-sm rounded"><i class="fas fa-user-shield fa-fw"></i> <?= $listGuild['full_name']; ?></a>
+
+      <?php endif ?>
+
       </div>
       <div class="card-footer">
-        <a href="?mod=editData&data=<?= base64_encode($listGuild['id_guild']); ?>" class="btn btn-info btn-sm mb-2">
-          <i class="fas fa-edit fa-fw"></i> Edit
+        <a href="<?= base_url; ?>/attr/User/?mod=viewMyGuildID&idGuild=<?= base64_encode($listGuild['id_guild']); ?>" class="btn btn-primary mb-2 btn-circle">
+          <i class="fa fa-eye fa-fw" aria-hidden="true"></i>
+        </a>
+        
+        <a href="?mod=editData&data=<?= base64_encode($listGuild['id_guild']); ?>" class="btn btn-info mb-2 btn-circle" onclick="return confirm('Anda Yakin Ingin Mengedit Data Guild Ini ??')">
+          <i class="fas fa-edit fa-fw"></i>
         </a>
         <?php if($listGuild['guild_aktif'] > 0)  :?>
-          <a href="?mod=blockGuild&data=<?= base64_encode($listGuild['id_guild']); ?>" class="btn btn-warning btn-sm mb-2">
-          <i class="fa fa-ban fa-fw" aria-hidden="true"></i> Block
+          <a href="?mod=blockGuild&data=<?= base64_encode($listGuild['id_guild']); ?>" class="btn btn-warning mb-2 btn-circle" onclick="return confirm('Anda Yakin Ingin Memblokir Guild Ini ??')">
+          <i class="fa fa-ban fa-fw" aria-hidden="true"></i> 
         </a>
         <?php elseif($listGuild['guild_aktif'] < 1)  :?>
-          <a href="?mod=activated&data=<?= base64_encode($listGuild['id_guild']); ?>" class="btn btn-success btn-sm mb-2">
-          <i class="fa fa-check-circle fa-fw" aria-hidden="true"></i> Aktif
+          <a href="?mod=activated&data=<?= base64_encode($listGuild['id_guild']); ?>" class="btn btn-success mb-2 btn-circle" onclick="return confirm('Kembali Mengaktifkan guild Ini ??')">
+          <i class="fa fa-check-circle fa-fw" aria-hidden="true"></i> 
         </a>
         <?php endif; ?>
         <a href="?mod=deleteGuildFromlist&data-guild=<?= base64_encode($listGuild['id_guild']); ?>"
-          class="btn btn-danger btn-sm mb-2" onclick="return confirm('Anda Yakin')">
-          <i class="fas fa-trash-alt fa-fw"></i> Delete
+          class="btn btn-danger mb-2 btn-circle" onclick="return confirm('Anda Yakin Ingin Menghapus Guild Ini ??')">
+          <i class="fas fa-trash-alt fa-fw"></i>
         </a>
 
-      </div>
-      <div class="card-footer">
-        <?php if($listGuild['guild_post'] === 'Public'): ?>
-        <p class="small">Akses Guild ::
-          <span class="badge badge-primary">
-            <i class="fa fa-globe fa-fw" aria-hidden="true"></i> <?= $listGuild['guild_post']; ?>
-          </span>
-        </p>
-        <p>Creator :: <a href="<?= base_url; ?>/attr/User/?mod=viewUser&q=<?= base64_encode($listGuild['full_name']) ?>"
-            class="btn btn-link"><?= $listGuild['full_name']; ?></a></p>
-
-        <?php elseif($listGuild['guild_post'] === 'Private'): ?>
-        <p class="small">Akses Guild ::
-          <span class="badge badge-dark">
-            <i class="fas fa-lock fa-fw"></i> <?= $listGuild['guild_post']; ?>
-          </span>
-        </p>
-        <p>Creator :: <a
-            href="<?= base_url; ?>/attr/User/?mod=viewUser&q=<?= base64_encode($listGuild['full_name']) ?>"><?= $listGuild['full_name']; ?></a>
-        </p>
-
-        <?php endif ?>
       </div>
     </div>
   </div>
