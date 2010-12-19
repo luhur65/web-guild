@@ -43,7 +43,7 @@
          1. Melihat Semua guild yg Ada
          2. Menghapus guild 
          3. Mengedit guild
-         4. Memblockir Guild
+         4. Memblockir Guild & Aktifkan guild
       3. Mengelolah Report 
          1. Report User :
             1. Membalas Report User
