@@ -6,14 +6,6 @@ $encode = $_GET['data'];
 // decode data
 $id = base64_decode($_GET['data']);
 
-// cek jika yg mengakses halaman ini bukan pemilik akun yg sebenarnya 
-if($detail['id_user'] !== $id){
-    echo "<script> document.location.href='?mod=home'; </script>";
-
-    exit();
-    return false;
-}
-
 // Pengecekan url
 if (!$id) {
     echo '<div class="alert alert-danger" role="alert">
