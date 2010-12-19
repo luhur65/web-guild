@@ -230,6 +230,11 @@ function hapusUser($data)
 {
     global $conn;
 
+    $pilih = mysqli_query($conn, "SELECT * FROM guild_info_member WHERE id_user ='$data'");
+    $result = mysqli_fetch_assoc($pilih);
+    $dataGambar = $result['foto_profil'];
+    unlink('../../assets/img/user-icon/' . $dataGambar);
+
     mysqli_query($conn, "DELETE FROM guild_info_member WHERE id_user = '$data'");
 
     return mysqli_affected_rows($conn);
