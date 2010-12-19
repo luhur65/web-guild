@@ -93,6 +93,12 @@
 
     $conn = mysqli_connect($hostname,$username,$pass,$dbname);
 
+    <!-- Kemudian Edit Bagian Ini  -->
+    // Link Utama
+    define('base_url',"http://localhost/tugasphp/guild");
+
+    // Ubah Menjadi Link Folder tempat Menyimpan web ini di komputer / laptop anda
+
     ```
 2. Konfigurasi Database Pun Sudah Selesai
 
