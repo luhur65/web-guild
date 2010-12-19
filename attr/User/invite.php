@@ -20,7 +20,7 @@ if (!$_GET['q']) {
     $dataGuild = mysqli_query($conn,"SELECT * FROM guild_center WHERE id_guild = '$idguild'");
     $guild = mysqli_fetch_assoc($dataGuild);
     
-    $pesan = htmlspecialchars(" Hai , ". $teman['full_name'] ."  Saya Mengundang mu Untuk Bergabung Dengan Guild Saya ". $guild['guild_name'] ." , Saya Tunggu Kamu Di guild Saya Ya !! . Password guild = ". base64_decode($guild['guild_pass']) ."",ENT_QUOTES);
+    $pesan = htmlspecialchars(" Hai , ". $teman['full_name'] ."  Saya Mengundang mu Untuk Bergabung Dengan Guild Saya ". $guild['guild_name'] ." , Saya Tunggu Kamu Di guild Saya Ya !!",ENT_QUOTES);
 
     $encodePesan = base64_encode($pesan);
 

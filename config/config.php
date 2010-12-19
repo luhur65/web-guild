@@ -362,8 +362,8 @@ function setPassword($data)
     // Set password Untuk Guild Private
     $id = base64_decode($_GET['data']);
 
-    $pass = mysqli_real_escape_string($conn, $data['pass']);
-    $confirm = mysqli_real_escape_string($conn, $data['pass2']);
+    $pass = htmlspecialchars($data['pass'],ENT_QUOTES);
+    $confirm = htmlspecialchars($data['pass2'], ENT_QUOTES);
 
 
     // Enkrysip Password 
@@ -387,13 +387,14 @@ function joinToGuild($data)
         
         mysqli_query($conn, $query);
 
-        return mysqli_affected_rows($conn);
+    return mysqli_affected_rows($conn);
 
 }
 
 // Function Undang Teman
 function inviteFriend($data)
 {
+    $id = 0;
     $query = "SELECT * FROM guild_info_member WHERE
                             id_user LIKE '%$data%' OR
                             full_name LIKE '%$data%' OR 
