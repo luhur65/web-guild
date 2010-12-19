@@ -10,8 +10,8 @@ if (isset($_POST['log_'])) {
         return false;
     }
 
-    $username = $_POST['username'];
-    $email = $_POST['username'];
+    $username = htmlspecialchars(addslashes(strip_tags($_POST['username'])),ENT_QUOTES);
+    $email = htmlspecialchars(addslashes(strip_tags($_POST['username'])),ENT_QUOTES);
     $password = $_POST['password'];
 
     $query = mysqli_query($conn, "SELECT * FROM guild_info_member WHERE guild_info_member.username = '$username'");
