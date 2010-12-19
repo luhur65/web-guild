@@ -496,6 +496,32 @@ function editAllData($data)
 
 }
 
+// Function blocked guild
+function blockGuild($data)
+{
+    global $conn;
+
+    $id = base64_decode($_GET['data']);
+    $aktif = 0;
+
+    mysqli_query($conn, "UPDATE `guild_center` SET `guild_aktif`= '$aktif' WHERE id_guild = '$id'");
+
+    return mysqli_affected_rows($conn);
+}
+
+// Function blocked guild
+function aktifkan($data)
+{
+    global $conn;
+
+    $id = base64_decode($_GET['data']);
+    $aktif = 1;
+
+    mysqli_query($conn, "UPDATE `guild_center` SET `guild_aktif`= '$aktif' WHERE id_guild = '$id'");
+
+    return mysqli_affected_rows($conn);
+}
+
 // Delete Guild
 function deleteMyGuild($data)
 {

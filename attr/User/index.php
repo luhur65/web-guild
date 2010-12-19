@@ -3,8 +3,6 @@ require_once '../temp/auth_header.php';
 
 ?>
 
-<body id="page-top">
-
   <div class="container-fluid">
     <?php 
   if (isset($_SESSION['log_'])) {
@@ -103,7 +101,6 @@ require_once '../temp/auth_header.php';
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          </button>
         </div>
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">

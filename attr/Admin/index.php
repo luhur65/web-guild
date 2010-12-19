@@ -34,6 +34,12 @@ if ($row['role'] == 'Anggota') {
            case 'editData':
              require_once 'guild/editGuild.php';
              break;
+           case 'blockGuild':
+             require_once 'guild/action.php';
+             break;
+           case 'activated':
+             require_once 'guild/action.php';
+             break;
            case 'deleteGuildFromlist':
              require_once 'guild/delete.php';
              break;

@@ -6,6 +6,15 @@ $checkGuild = "SELECT * FROM guild_center JOIN guild_info_member ON guild_info_m
 
 $queryCheck = query($checkGuild);
 
+foreach ($queryCheck as $gl) {
+	
+	// Jika Guild Di block oleh Admin
+	if ($gl['guild_aktif'] < 1) {
+    	echo showMessage('danger','Blocked','Kami Memblokir Guild Ini Untuk Sementara Waktu Sampai Masa Waktu Yg Telah Kami Tentukan Sendiri!!, Terima Kasih');
+
+    	return false;
+	}
+}
 
 // Cek Jika Ada Anggota atau orang lain
 // masuk ke guild tanpa join
