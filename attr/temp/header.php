@@ -12,7 +12,7 @@
   <meta name="author" content="dhrm_strmng">
 
   <title>GuildRoom - Chatting</title>
-  <link rel="icon" href="<?= base_url ?>/assets/img/favicon.png">
+  <link rel="icon" href="<?= base_url ?>/assets/img/favicon.jpg">
 
   <!-- Custom fonts for this template-->
   <link href="<?= base_url;?>/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

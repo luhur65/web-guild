@@ -49,7 +49,7 @@ $takeOneGuild = query($oneGuild);
 
   <title>Beranda Saya</title>
 
-  <link rel="icon" href="<?= base_url ?>/assets/img/favicon.png">
+  <link rel="icon" href="<?= base_url ?>/assets/img/favicon.jpg">
 
   <!-- Custom fonts for this template-->
   <link
