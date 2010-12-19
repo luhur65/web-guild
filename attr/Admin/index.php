@@ -25,6 +25,9 @@ if ($row['role'] == 'Anggota') {
            case 'editProfile':
              require_once 'profile/edit_user.php';
              break;
+           case 'viewAllLog':
+             require_once 'log.php';
+             break;
            case 'blockByAdmin':
              require_once 'block_user.php';
              break;
