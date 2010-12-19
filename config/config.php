@@ -391,6 +391,19 @@ function joinToGuild($data)
 
 }
 
+// Function Delete Invitation
+function ignoreInvite($data)
+{
+    global $conn;
+
+    $idPesan = $data['idPesan'];
+
+    mysqli_query($conn, "DELETE FROM `guild_chat` WHERE id_invite = $idPesan");
+
+    return mysqli_affected_rows($conn);
+    
+}
+
 // Function Undang Teman
 function inviteFriend($data)
 {
@@ -627,6 +640,18 @@ function deleteReport($data)
     $fromUserId = base64_decode($_GET['data']);
 
     mysqli_query($conn, "DELETE FROM `report_user` WHERE from_user = '$fromUserId'");
+
+    return mysqli_affected_rows($conn);
+}
+
+// Function Hapus Report
+function delreGuild($data)
+{
+    global $conn;
+
+    $idReport = $_GET['data'];
+
+    mysqli_query($conn, "DELETE FROM `report_guild` WHERE id_report_guild = '$idReport'");
 
     return mysqli_affected_rows($conn);
 }

@@ -41,6 +41,9 @@ $query    = query($data_query);
         <a href="?mod=editData&data=<?= base64_encode($listGuild['id_guild']); ?>" class="btn btn-info btn-sm">
           <i class="fas fa-edit fa-fw"></i> Edit
         </a>
+        <a href="?mod=blockGuild&data=<?= base64_encode($listGuild['id_guild']); ?>" class="btn btn-warning btn-sm">
+          <i class="fas fa-edit fa-fw"></i> Block
+        </a>
         <a href="?mod=deleteGuildFromlist&data-guild=<?= base64_encode($listGuild['id_guild']); ?>"
           class="btn btn-danger btn-sm" onclick="return confirm('Anda Yakin')">
           <i class="fas fa-trash-alt fa-fw"></i> Delete

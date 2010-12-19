@@ -381,7 +381,7 @@ $takeOneGuild = query($oneGuild);
               $receive = $detail['id_user'];
 
               // list Message
-              $dataMessage = "SELECT * FROM guild_chat WHERE guild_chat.to_user = '$receive'";
+              $dataMessage = "SELECT * FROM guild_chat WHERE guild_chat.to_user = '$receive' And accept = 0";
               $queryCount = count(query($dataMessage));
 
               ?>

@@ -61,6 +61,12 @@ if ($row['role'] == 'Anggota') {
            case 'deleteRp':
              require_once 'report/deleted.php';
              break;
+           case 'delReportGuild':
+             require_once 'report/deleteReportGuild.php';
+             break;
+           case 'rdGui':
+             require_once 'report/guildRead.php';
+             break;
            
            default:
              require_once '../404.html';

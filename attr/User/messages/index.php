@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $id = base64_decode($_GET['guild']);
 
@@ -8,14 +8,16 @@ $queryCheck = query($checkGuild);
 
 
 // Cek Jika Ada Anggota atau orang lain
-// masuk ke guild tanpa join 
+// masuk ke guild tanpa join
 if ($detail['guild_id'] !== $id) {
-	echo alertPopUp('Anda Bukan Anggota Guild Ini','?mod=home');
+    echo alertPopUp('Anda Bukan Anggota Guild Ini', '?mod=home');
 
-	return false;
+    return false;
 }
 
 ?>
+
+<?php if ($detail['guild_id'] === $id)  : ?>
 
 
 <!-- Chatting -->
@@ -31,38 +33,46 @@ if ($detail['guild_id'] !== $id) {
 <div class="row">
 
 	<div class="col-lg mb-4">
-	<div class="card shadow p-2 rounded" aria-hidden="true">
-		<div class="card-body" id="response">
-		
-			
+		<div class="card shadow p-2 rounded" aria-hidden="true">
+			<div class="card-body" id="response">
+
+
+			</div>
+		</div>
+
+		<div class="form-group mb-0 mt-2 shadow card">
+			<form method="post" class="p-3">
+				<div class="form-group">
+					<img src="<?= base_url; ?>/assets/img/user-icon/<?= $detail['foto_profil'];?>"
+						class="img-fluid img-anggota rounded-circle" alt="Profil"> <?= $detail['full_name']; ?>
+				</div>
+				<input type="hidden" name="name" id="name" placeholder="Your name here"
+					value="<?= $detail['full_name']; ?>"
+					readonly required />
+				<input type="text" name="message" id="message" placeholder="Type message here" class="form-control"
+					required />
+			</form>
 		</div>
 	</div>
 
-	<div class="form-group mb-0 mt-2 shadow card">
-		<form method="post" class="p-3">
-		<div class="form-group">
-			<img src="<?= base_url; ?>/assets/img/user-icon/<?= $detail['foto_profil'];?>" class="img-fluid img-anggota rounded-circle" alt="Profil"> <?= $detail['full_name']; ?>
-		</div>
-			<input type="hidden" name="name" id="name" placeholder="Your name here" value="<?= $detail['full_name']; ?>" readonly required />
-			<input type="text" name="message" id="message" placeholder="Type message here" class="form-control" required />
-		</form>
-	</div>
-</div>
+	<div class="col-lg-3">
 
-<div class="col-lg-3">
-
-	<div class="card">
-		<div class="card-body">
-			<h4 class="card-title">Member Guild</h4>
-			<?php foreach($queryCheck as $ck) : ?>
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Member Guild</h4>
+				<?php foreach ($queryCheck as $ck) : ?>
 				<div class="mt-3">
-					<img src="<?= base_url; ?>/assets/img/user-icon/<?= $ck['foto_profil'];?>" class="img-fluid img-thumbnail rounded-circle" alt="4das7657a23has81hsjc">
+					<img src="<?= base_url; ?>/assets/img/user-icon/<?= $ck['foto_profil'];?>"
+						class="img-fluid img-thumbnail rounded-circle" alt="4das7657a23has81hsjc">
 					<?= $ck['full_name']; ?>
 				</div>
-			<?php endforeach; ?>
+				<?php endforeach; ?>
+			</div>
 		</div>
+
 	</div>
 
 </div>
 
-</div>
+
+<?php endif;
