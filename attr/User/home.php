@@ -166,8 +166,19 @@ $id = $detail['guild_id'];
             <?= $p['post']; ?>
             <?php endif ?>
           </p>
+
+          <?php 
+
+          $idPost = $p['id_post'];
+
+          // jumlah like 
+          $dataLike = "SELECT count_like FROM data_like_post WHERE id_post_like = '$idPost' Order By id_like DESC LIMIT 1";
+          $queryLike = mysqli_query($conn, $dataLike);
+          $like = mysqli_fetch_assoc($queryLike);
+
+              ?>
         <!-- Tombol like , comment -->
-        <a href="" class="btn btn-light btn-sm text-primary"><i class="fa fa-thumbs-up fa-fw" aria-hidden="true"></i> Like</a>
+        <a href="?mod=likePost&amp;like=<?= base64_encode($p['id_post']) ?>" class="btn btn-light btn-sm text-primary"><i class="fa fa-thumbs-up fa-fw" aria-hidden="true"></i> <?= $like['count_like']; ?> Like</a>
         <a href="" class="btn btn-light btn-sm text-primary"><i class="fa fa-comments fa-fw" aria-hidden="true"></i> Comment</a>
 
       </div>

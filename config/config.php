@@ -718,30 +718,50 @@ function delreGuild($data)
     return mysqli_affected_rows($conn);
 }
 
-
-// Function Chatting Private User
-function replyChat($data)
+// function like postingan
+function likePost()
 {
     global $conn;
 
-    $penerima = base64_decode($_GET['data']);
-    $pengirim = $data['sender'];
-    $idChat = $data['idChat'];
+    // ambil id postingan yg dilike 
+    $idPost = base64_decode($_GET['like']);
 
-    // Isi Chatting
+    // ambil data count like di database
+    $dataLike = "SELECT * FROM `guild_post`  JOIN `data_like_post` ON guild_post.id_post = data_like_post.id_post_like WHERE `id_post` = '$idPost' Order By id_like DESC LIMIT 1";
+    $queryDataLike = mysqli_query($conn, $dataLike);
+    $post = mysqli_fetch_assoc($queryDataLike);
+    
+    $likeAwal = $post['count_like'];
 
-    // 1.Validasi Isi Chat
-    $textValidate = htmlspecialchars(addslashes(stripslashes($data['chat'])),ENT_QUOTES);
+    // user yg like postingan
+    $userLike = $_SESSION['log_'];
+    $dataUser = "SELECT id_user FROM guild_info_member WHERE username = '$userLike' or email = '$userLike'";
+    $queryDataUser = mysqli_query($conn, $dataUser);
+    $user = mysqli_fetch_assoc($queryDataUser);
+    $idUserLike = $user['id_user'];
 
-    // 2.Encoding / Enkripsikan Pesan Agar Aman
-    $chat = base64_encode($textValidate);
+    // jml like 
+    $like = 1;
+    $like += $likeAwal;
 
-    // Masukkan Semua Ke Database
-    $query = "INSERT INTO `reply_user_chat`(`id_reply`, `id_chat`, `to_user`, `reply_isi_chat`, `penerima`) VALUES (null, '$idChat', '$penerima', '$chat', '$pengirim')";
+    // echo $post['id_user_like'];
+    // echo $idUserLike;
 
-    mysqli_query($conn,$query);
+    // cek jika ada user yg like lebih dari 2x 
+    if($idUserLike === $post['id_user_like']){
 
-    return mysqli_affected_rows($conn);
+        echo alertPopUp('Tidak Bisa Membatalkan Like','?mod=home');
+        
+        return false;
+
+    } elseif ($idUserLike !== $post['id_user_like']) {
+    
+        $query = "INSERT INTO `data_like_post`(`id_post_like`, `id_user_like`, `count_like`) VALUES ('$idPost','$idUserLike','$like')";
+        mysqli_query($conn, $query);
+    
+        return mysqli_affected_rows($conn);
+    }
+    
 }
 
 // Funtion Log-in Activity
