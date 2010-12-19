@@ -1,5 +1,16 @@
 <?php 
 
+// Cek Dulu Role Anggota 
+if ($row['role'] == 'Anggota') {
+    echo "<script>
+    document.location.href = '".base_url."/attr/User'
+  </script>";
+  exit();
+
+  return false;
+
+}
+
 // Jika $_GET['mod'] === blockGuild
 if ($_GET['mod'] === 'blockGuild') {
     
@@ -32,4 +43,3 @@ if ($_GET['mod'] === 'blockGuild') {
         }
     }
 }
-
