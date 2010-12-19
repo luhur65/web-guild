@@ -45,19 +45,21 @@ if (isset($_POST['edit'])) {
 
 ?>
 
-<div class="card col-lg-8 shadow p-3 mx-auto">
+<div class="card shadow p-3 mx-auto rounded">
     <div class="card-body">
         <form action="" method="post">
-              <div class="form-group">
+            <div class="form-group">
                 <label for="post">
-                    <img src="<?= base_url; ?>/assets/img/user-icon/<?= $rowData['foto_profil']; ?>" class="img-fluid img-anggota rounded-circle" alt="Profile">
+                    <img src="<?= base_url; ?>/assets/img/user-icon/<?= $rowData['foto_profil']; ?>"
+                        class="img-fluid img-anggota rounded-circle" alt="Profile">
                     <?= $rowData['full_name'] ?>
                 </label>
-                <textarea class="form-control" name="post" id="post" rows="5" required><?= $rowData['post']; ?></textarea>
+                <textarea class="form-control" name="post" id="post" rows="6"
+                    required><?= htmlspecialchars($rowData['post']); ?></textarea>
             </div>
             <div class="form-group row">
                 <div class="col-lg-5">
-                <button type="submit" name="edit" class="btn btn-success btn-block">Save Changes</button>
+                    <button type="submit" name="edit" class="btn btn-success btn-block">Save Changes</button>
                 </div>
             </div>
         </form>

@@ -466,12 +466,20 @@ function getOutFromGuild($data)
 
     $query = "UPDATE guild_info_member SET guild_id = '$guild' WHERE id_user = '$id'";
 
-    // Hapus Semua Postingan Yg Pernah Dibuat 
-    mysqli_query($conn,"DELETE FROM guild_post WHERE guild_post.user_id = '$id'");
+    $post = "SELECT * FROM guild_post WHERE guild_post.user_id = '$id'";
+    $ambil = query($post);
+
+    foreach ($ambil as $key) {
+        
+        $idPost = base64_encode($key['id_post']);
+
+        // Hapus Semua Postingan Yg Pernah Dibuat
+        deletePost($idPost);
+    }
 
     mysqli_query($conn,$query);
 
-        return mysqli_affected_rows($conn);
+    return mysqli_affected_rows($conn);
 }
 
 // Edit Guild Data
@@ -630,9 +638,7 @@ function deletePost($data)
 {
     global $conn;
 
-    $url = $_GET['data'];
-
-    $id = base64_decode($url);
+    $id = base64_decode($data);
 
     // delete like ketika postingan yg dilike dihapus
     mysqli_query($conn, "DELETE FROM `data_like_post` WHERE id_post_like = '$id'");

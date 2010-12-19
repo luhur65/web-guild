@@ -159,8 +159,8 @@ $id = $detail['guild_id'];
         </p>
         <span class="small badge badge-dark"> <?= $date[2] ." " . $bul ." ". $date[0]; ?> </span>
         <p class="lead">
-          <?php if(strlen($p['post']) > 900) :?>
-          <?= substr($p['post'],0,900); ?> ... <a href="?mod=seeMore&data=<?= base64_encode($p['id_post']) ?>"
+          <?php if(strlen($p['post']) > 500) :?>
+          <?= substr($p['post'],0,500); ?> ... <a href="?mod=seeMore&data=<?= base64_encode($p['id_post']) ?>"
             class="btn btn-link">Lihat Selengkapnya</a>
           <?php else : ?>
           <?= $p['post']; ?>
@@ -182,6 +182,10 @@ $id = $detail['guild_id'];
           $dataLikers = "SELECT id_post_like, id_user_like FROM data_like_post WHERE id_post_like = '$idPost' and id_user_like = '$idLikers'";
           $show = mysqli_query($conn, $dataLikers);
           $sw = mysqli_fetch_assoc($show);
+
+          // nama user yg like 
+          // $nameUserLike = "SELECT full_name FROM data_like_post JOIN guild_info_member On guild_info_member.id_user = data_like_post.id_user_like WHERE id_post_like = '$idPost'";
+          // $showName = query($nameUserLike); 
 
           ?>
 

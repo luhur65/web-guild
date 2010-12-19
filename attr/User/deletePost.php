@@ -30,7 +30,7 @@ if ($base != $rowData['id_post']) {
 
 } else {
     
-    if (deletePost($_POST) > 0) {
+    if (deletePost($idpostingan) > 0) {
         echo alertPopUp('Berhasil Dihapus','?mod=home');
     } else {
         echo alertPopUp('Gagal Dihapus','?mod=home');

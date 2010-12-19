@@ -1,6 +1,5 @@
 <?php
 
-
 require_once 'assets/bg-img/bg-masthead.jpg';
 
 

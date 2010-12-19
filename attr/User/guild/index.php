@@ -50,7 +50,7 @@ $queryAdmin = query($admin);
 
 <hr class="bg-primary">
 
-<div class="row rounded">
+<div class="row rounded mb-5">
 
   <div class="col-lg-4 mb-3">
     <div class="card shadow">
@@ -232,8 +232,8 @@ $queryAdmin = query($admin);
             <?= $p['full_name']; ?> Telah Keluar Dari Guild <?= $p['guild_name']; ?>
           </span> </p> <?php endif ?>
         <p class="card-text">
-          <?php if(strlen($p['post']) > 900) :?>
-          <?= substr($p['post'],0,900); ?> ... <a href="?mod=seeMore&data=<?= base64_encode($p['id_post']) ?>"
+          <?php if(strlen($p['post']) > 500) :?>
+          <?= substr($p['post'],0,500); ?> ... <a href="?mod=seeMore&data=<?= base64_encode($p['id_post']) ?>"
             class="btn btn-link">Lihat Selengkapnya</a>
           <?php else : ?>
           <?= $p['post']; ?>
