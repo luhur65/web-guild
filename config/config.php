@@ -776,7 +776,7 @@ function likePost()
     $idUserLike = $user['id_user'];
 
     // ambil data count like di database
-    $dataLike = "SELECT * FROM `guild_post`  JOIN `data_like_post` ON guild_post.id_post = data_like_post.id_post_like WHERE `id_post` = '$idPost' And id_user_like = '$idUserLike' Order By id_like DESC";
+    $dataLike = "SELECT * FROM `guild_post` JOIN `data_like_post` ON guild_post.id_post = data_like_post.id_post_like WHERE `id_post` = '$idPost' And id_user_like = '$idUserLike' Order By id_like DESC";
     $queryDataLike = mysqli_query($conn, $dataLike);
 
     // jml like 
@@ -811,6 +811,30 @@ function likePost()
     
     }
     
+}
+
+// function comment
+function comment($data)
+{
+    global $conn;
+
+    // id postingan yg dikomentari
+    $post = base64_decode($_GET['post']);
+
+    // user yg berkomenter
+    $user = $_SESSION['log_'];
+    $queryUser = mysqli_query($conn, "SELECT * FROM guild_info_member WHERE guild_info_member.username = '$user' or guild_info_member.email = '$user'");
+    $usr = mysqli_fetch_assoc($queryUser);
+    $userCommentar = $usr['id_user'];
+
+    $time = date('H:i:s');
+    $comment = htmlspecialchars(strip_tags(addslashes($data['comment'])),ENT_QUOTES);
+    $comment = trim($comment);
+    $comment = nl2br($comment);
+
+    mysqli_query($conn, "INSERT INTO `data_comment`(`id_comment_post`, `user_comment`, `comment`, `time`) VALUES ('$post', '$userCommentar', '$comment', '$time')");
+
+    return mysqli_affected_rows($conn);
 }
 
 // Function notification

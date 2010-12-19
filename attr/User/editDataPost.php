@@ -55,7 +55,7 @@ if (isset($_POST['edit'])) {
                     <?= $rowData['full_name'] ?>
                 </label>
                 <textarea class="form-control" name="post" id="post" rows="6"
-                    required><?= htmlspecialchars($rowData['post']); ?></textarea>
+                    required><?= str_replace('<br />', "", $rowData['post']); ?></textarea>
             </div>
             <div class="form-group row">
                 <div class="col-lg-5">

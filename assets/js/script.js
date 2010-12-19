@@ -26,7 +26,8 @@ $(function () {
                 post: post
             },
             success: function () {
-                document.location.href = '?mod=home';
+                // merefresh halaman
+                document.location.href = '';
             }
         })
     });

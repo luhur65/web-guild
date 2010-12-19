@@ -188,7 +188,8 @@ $id = $detail['guild_id'];
 
         <!-- like , comment -->
         <?php if($idLikers === $sw['id_user_like']): ?>
-        <a href="#" class="btn btn-outline-light btn-sm mb-0 countLike text-danger like-button" data-id="<?= $p['id_post']; ?>">
+        <a href="#" class="btn btn-outline-light btn-sm mb-0 countLike text-danger like-button"
+          data-id="<?= $p['id_post']; ?>">
           <?php if($like > 0) : ?>
           <i class="fa fa-heart fa-fw" aria-hidden="true"></i> <?= $like; ?> </a>
         <?php else : ?>
@@ -204,7 +205,7 @@ $id = $detail['guild_id'];
         <?php endif; ?>
 
 
-        <a href="" class="btn btn-link text-primary mb-0 btn-sm"><i class="fa fa-comments fa-fw" aria-hidden="true"></i>
+        <a href="?mod=comment&amp;post=<?= base64_encode($p['id_post']); ?>" class="btn btn-link text-primary mb-0 btn-sm"><i class="fa fa-comments fa-fw" aria-hidden="true"></i>
           Comment</a>
         <!-- akhir dari like, comment -->
       </div>

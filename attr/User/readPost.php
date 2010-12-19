@@ -126,6 +126,48 @@ $queryData = query($dataPost);
                   <p class="lead">
                       <?= $p['post']; ?>
                   </p>
+
+                  <?php 
+
+          $idPost = $p['id_post'];
+
+          // jumlah like 
+          $dataLike = "SELECT * FROM data_like_post WHERE id_post_like = '$idPost'";
+
+          // jumlah like
+          $like = count(query($dataLike));
+          
+          // orang yg like
+          $idLikers = $detail['id_user'];
+          $dataLikers = "SELECT id_post_like, id_user_like FROM data_like_post WHERE id_post_like = '$idPost' and id_user_like = '$idLikers'";
+          $show = mysqli_query($conn, $dataLikers);
+          $sw = mysqli_fetch_assoc($show);
+
+          ?>
+
+
+        <!-- like , comment -->
+        <?php if($idLikers === $sw['id_user_like']): ?>
+        <a href="#" class="btn btn-outline-light btn-sm mb-0 countLike text-danger like-button" data-id="<?= $p['id_post']; ?>">
+          <?php if($like > 0) : ?>
+          <i class="fa fa-heart fa-fw" aria-hidden="true"></i> <?= $like; ?> </a>
+        <?php else : ?>
+        <i class="fa fa-heart fa-fw" aria-hidden="true"></i> Like </a>
+        <?php endif; ?>
+        <?php elseif($idLikers !== $sw['id_user_like']): ?>
+        <a href="#" class="btn btn-light btn-sm mb-0 text-dark like-button" data-id="<?= $p['id_post']; ?>">
+          <?php if($like > 0) : ?>
+          <i class="fa fa-heart fa-fw" aria-hidden="true"></i> <?= $like; ?> </a>
+        <?php else : ?>
+        <i class="fa fa-heart fa-fw" aria-hidden="true"></i> Like </a>
+        <?php endif; ?>
+        <?php endif; ?>
+
+
+        <a href="?mod=comment&amp;post=<?= base64_encode($p['id_post']); ?>" class="btn btn-link text-primary mb-0 btn-sm"><i class="fa fa-comments fa-fw" aria-hidden="true"></i>
+          Comment</a>
+
+          
                 </div>
               </div>
             </div>
