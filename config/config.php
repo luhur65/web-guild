@@ -630,6 +630,9 @@ function deletePost($data)
 
     $id = base64_decode($url);
 
+    // delete like ketika postingan yg dilike dihapus
+    mysqli_query($conn, "DELETE FROM `data_like_post` WHERE id_post_like = '$id'");
+    // delete postingan
     mysqli_query($conn, "DELETE FROM `guild_post` WHERE id_post = '$id'");
 
     return mysqli_affected_rows($conn);
@@ -727,7 +730,7 @@ function likePost()
     $idPost = base64_decode($_GET['like']);
 
     // ambil data count like di database
-    $dataLike = "SELECT * FROM `guild_post`  JOIN `data_like_post` ON guild_post.id_post = data_like_post.id_post_like WHERE `id_post` = '$idPost' Order By id_like DESC LIMIT 1";
+    $dataLike = "SELECT * FROM `guild_post`  JOIN `data_like_post` ON guild_post.id_post = data_like_post.id_post_like WHERE `id_post` = '$idPost' Order By id_like DESC ";
     $queryDataLike = mysqli_query($conn, $dataLike);
     $post = mysqli_fetch_assoc($queryDataLike);
     

@@ -90,7 +90,7 @@ $id = $detail['guild_id'];
   <div class="mx-auto">
     <div class="card shadow mb-4">
       <!-- Card Header - Dropdown -->
-      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <div class="card-header border-0 bg-white py-3 d-flex flex-row align-items-center justify-content-between mb-0">
         <h6 class="m-0 font-weight-bold text-primary">
           <a href="<?= base_url; ?>/assets/img/user-icon/<?= $p['foto_profil']?>" class="example-image-link"
             data-lightbox="example-image" data-title="<?= $p['full_name'] ?>">
@@ -152,7 +152,7 @@ $id = $detail['guild_id'];
         <?php endif ?>
       </div>
       <!-- Card Body -->
-      <div class="card-body">
+      <div class="card-body mt-0">
 
         <p class="small badge badge-info">
           <?= $p['full_name']; ?>
