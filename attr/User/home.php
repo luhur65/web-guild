@@ -204,9 +204,18 @@ $id = $detail['guild_id'];
         <?php endif; ?>
         <?php endif; ?>
 
+        <?php 
+
+          // data comment / banyak commentar
+          $dataCommentar = "SELECT * FROM `data_comment` JOIN `guild_post` ON guild_post.id_post = data_comment.id_comment_post WHERE id_post = '$idPost'";
+
+          $count = count(query($dataCommentar));
+
+        ?>
+
 
         <a href="?mod=seeMore&amp;data=<?= base64_encode($p['id_post']) ?>" class="btn btn-link text-primary mb-0 btn-sm"><i class="fa fa-comments fa-fw" aria-hidden="true"></i>
-          Comment</a>
+          <?= $count = ($count > 0) ? "$count":"" ?> Comment</a>
         <!-- akhir dari like, comment -->
       </div>
     </div>

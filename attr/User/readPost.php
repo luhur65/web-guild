@@ -177,19 +177,23 @@ $queryData = query($dataPost);
         <?php endif; ?>
         <?php endif; ?>
 
+        <?php 
 
-        <a href="&amp;Link"
-          class="btn btn-link text-primary mb-0 btn-sm comment-pop"><i class="fa fa-comments fa-fw"
-            aria-hidden="true"></i>
-          Comment</a>
+          // count comment
+          $post = base64_decode($_GET['data']);
+          $data = "SELECT * FROM data_comment JOIN guild_post ON guild_post.id_post = data_comment.id_comment_post WHERE id_post = '$post'";
+          $count = count(query($data))
 
+        ?>
 
+        <a href="&amp;BreakTime&raquo;&laquo;&rarr;&larr;<?= htmlspecialchars('hacked!!'); ?>"
+          class="btn btn-link text-primary mb-0 btn-sm comment-pop"><i class="fa fa-comments fa-fw" aria-hidden="true"></i>
+         <?= $count = ($count > 0) ? "$count":"" ?> Comment</a>
       </div>
     </div>
   </div>
 
 <?php endforeach ?>
-
 
 <?php 
 
@@ -238,8 +242,11 @@ if(isset($_POST['send'])){
         <ul class="list-group list-group-flush">
           <?php foreach($queryKomentar as $k) : ?>
           <li class="list-group-item">
+            <div class="d-flex align-items-center">
             <img src="<?= base_url; ?>/assets/img/user-icon/<?= $k['foto_profil']; ?>"
-              class="img-fluid img-anggota rounded-circle" alt="Gambar Komentar Public"> <?= $k['full_name']; ?>
+              class="img-fluid img-anggota rounded-circle mr-2" alt="Gambar Komentar Public"> 
+              <?= $k['full_name']; ?>
+            </div>
             <p class="lead mt-2">
               <?= $k['comment']; ?>
             </p>
