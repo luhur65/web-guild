@@ -160,6 +160,7 @@ function editProfil($data)
     $userID = $data['id'];
     $namaLengkap = htmlspecialchars($data['full_name'],ENT_QUOTES);
     $bioAkun = htmlspecialchars(stripslashes($data['bio']),ENT_QUOTES);
+    $bioAkun = nl2br($bioAkun);
     $gambarLama = $data['gambarLama'];
 
     global $gambar;
@@ -359,6 +360,7 @@ function newGuild($data)
 
     $nama= htmlspecialchars(strip_tags(addslashes(stripslashes($data['guildName']))),ENT_QUOTES);
     $teks= htmlspecialchars(strip_tags(addslashes(stripslashes($data['info']))),ENT_QUOTES);
+    $teks = nl2br($teks);
     $creator= $data['creator'];
     $aktif = 1;
     $share = $data['share'];
@@ -482,6 +484,7 @@ function editAllData($data)
     // Data Guild
     $nama= htmlspecialchars(strip_tags(addslashes(stripslashes($data['nama']))),ENT_QUOTES);
     $teks= htmlspecialchars(strip_tags(addslashes(stripslashes($data['info']))),ENT_QUOTES);
+    $teks = nl2br($teks);
     $share = $data['share'];
 
     $bannerLama = $data['bannerLama'];
@@ -614,6 +617,7 @@ function sendMyPost($data)
     $idUser = $data['idUser'];
     $idGuild = $data['idGuild'];
     $post = htmlspecialchars(strip_tags($data['post']),ENT_QUOTES);
+    $post = nl2br($post);
     $date = date("Y-m-d");
 
     mysqli_query($conn, "INSERT INTO `guild_post`(`id_post`, `post`, `user_id`, `id_guild`, `post_date`) VALUES (null,'$post','$idUser','$idGuild','$date')");
@@ -647,6 +651,7 @@ function editPost($data)
 
     $id = base64_decode($url);
     $post = htmlspecialchars($data['post'],ENT_QUOTES);
+    $post = nl2br($post);
 
     mysqli_query($conn, "UPDATE `guild_post` SET `post`='$post' WHERE id_post = '$id'");
 
