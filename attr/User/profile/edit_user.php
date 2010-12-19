@@ -87,7 +87,7 @@ if (isset($_POST['submit'])) {
               </label>
             </div>
             <div class="col-lg-3 mt-0">
-              <a href="#" class="btn btn-outline-danger deleteAkun" data-user="<?= $detail['id_user']; ?>" id="deleteAccount"><i class="fa fa-trash fa-fw" aria-hidden="true"></i>  Delete Account</a>
+              <a href="?mod=delete&amp;user=<?= base64_encode($detail['id_user']); ?>" class="btn btn-outline-danger deleteAkun" id="deleteAccount"><i class="fa fa-trash fa-fw" aria-hidden="true"></i>  Delete Account</a>
             </div>
           </div>
           

@@ -51,23 +51,3 @@ $(function () {
         })
     });
 });
-
-$(function () {
-    $('.deleteAkun').on('click', function (e) {
-        e.preventDefault();
-
-        const user = $(this).data('user');
-        
-        $.ajax({
-            url: 'http://localhost/Praktek/web-guild/attr/User/?mod=delete&user=' + user,
-            type: 'post',
-            data: {
-                user: user
-            },
-            success: function (data) {
-                document.location.href = 'http://localhost/Praktek/web-guild/attr/auth_out.php';
-                // console.log(data)
-            }
-        })
-    })
-})
