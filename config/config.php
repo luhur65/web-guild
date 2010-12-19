@@ -211,7 +211,31 @@ function editProfil($data)
 
 }
 
-// Funtion Blockir akun user
+// non aktifkan akun oleh user itu sendiri
+function disableAkun($data)
+{
+    global $conn;
+
+    $block = 0;
+
+    $query = "UPDATE `guild_info_member` SET `is_aktif`= '$block' WHERE id_user = '$data'";
+
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn); 
+}
+
+// menghapus akun user oleh user itu sendiri
+function hapusUser($data)
+{
+    global $conn;
+
+    mysqli_query($conn, "DELETE FROM guild_info_member WHERE id_user = '$data'");
+
+    return mysqli_affected_rows($conn);
+}
+
+// Funtion Blockir akun user oleh admin
 function blockAccessUser($data)
 {
     global $conn;

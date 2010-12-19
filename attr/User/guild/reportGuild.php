@@ -2,10 +2,6 @@
 
 $id = base64_decode($_GET['guild']);
 
-// $data = "SELECT * FROM guild_center JOIN guild_info_member ON guild_center.id_guild = guild_info_member.guild_id WHERE id_guild = '$id'";
-
-// $queryData = query($data);
-
 // Jika Tombol kirim diklik
 if (isset($_POST['sendReport'])) {
     
@@ -17,15 +13,15 @@ if (isset($_POST['sendReport'])) {
 }
 
 ?>
-<div class="card col-md-5 mx-auto p-3">
+<div class="card mx-auto p-3">
     <div class="card-header bg-white">
-    <h2 class="card-title">Report Guild</h2>
+        <h2 class="card-title">Report Guild</h2>
     </div>
     <div class="card-body">
         <form action="" method="post">
             <input type="hidden" name="user" value="<?= $detail['id_user']; ?>">
             <div class="form-group">
-              <textarea class="form-control" name="info" rows="6" placeholder="Tulis Laporan Disini"></textarea>
+                <textarea class="form-control" name="info" rows="6" placeholder="Tulis Laporan Disini"></textarea>
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-success" name="sendReport">

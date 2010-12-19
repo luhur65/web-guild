@@ -23,8 +23,16 @@
 		let fileName = $(this).val().split('\\').pop();
 		$(this).next('.custom-file-label').addClass("selected").html(fileName);
         });
+
+        $(document).ready(function () {
+    $('.alert-dismissible').ready(function () {
+        $('.close').on('click', function () {
+            document.location.href = 'login';
+        });
+    });
+});
         
-		</script>
+        </script>
 
 </body>
 

@@ -1,23 +1,25 @@
-
 <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Profile Saya</h1>
     <span class="text-muted small"><?= date('l , d M Y') ?></span>
 </div> -->
 
-<div class="card shadow rounded p-4 col-lg-6 mx-auto mt-2 mb-5">
-    <div class="d-inline-flex flex-wrap mb-4">
-    <?php if($detail['foto_profil'] > 0) : ?>
-    <a href="<?= base_url; ?>/assets/img/user-icon/<?= $detail['foto_profil']?>" class="example-image-link" data-lightbox="example-image" data-title="<?= $detail['full_name'] ?>">
-    <img src="<?= base_url; ?>/assets/img/user-icon/<?= $detail['foto_profil']?>" alt="Profil Saya" class="example-image img-profile rounded-circle">
-    </a>
-    <?php endif ?>
-    <h2 class="h3 mx-3 d-sm-inline text-primary"><?= $detail['full_name']; ?>
-    <p class="lead text-dark display-5"><?= substr($detail['email'],0,-4) ?>
-</p>
-</h2>
-    </div>
+<div class="row">
+    <div class="card shadow rounded p-4 col-lg-6  mt-2 mb-5">
+        <div class="d-inline-flex flex-wrap mb-4">
+            <?php if($detail['foto_profil'] > 0) : ?>
+            <a href="<?= base_url; ?>/assets/img/user-icon/<?= $detail['foto_profil']?>" class="example-image-link"
+                data-lightbox="example-image" data-title="<?= $detail['full_name'] ?>">
+                <img src="<?= base_url; ?>/assets/img/user-icon/<?= $detail['foto_profil']?>" alt="Profil Saya"
+                    class="example-image img-profile rounded-circle">
+            </a>
+            <?php endif ?>
+            <h2 class="h3 mx-3 d-sm-inline text-primary"><?= $detail['full_name']; ?>
+                <p class="lead text-dark display-5"><?= substr($detail['email'],0,-4) ?>
+                </p>
+            </h2>
+        </div>
 
-<?php 
+        <?php 
 
 // String Tanggal Yg Akan Dipecah
 $join = $detail['tgl_join'];
@@ -127,58 +129,62 @@ $gl = mysqli_fetch_assoc($saya);
 ?>
 
 
-    <hr class="my-2">
-    <?php if($gl > 0) : ?>
-    <span class="text-muted mb-2 float-right">Guild : <span class="text-primary"> <i class="fa fa-check-circle fa-fw" aria-hidden="true"></i> <?= $gl['guild_name'];?> </span> </span>
-    <?php elseif(!$gl) : ?>
-    <span class="badge badge-danger mb-2 float-right">Belum Memiliki Guild</span>
-    <?php endif ?>
-    <p class="small">Bergabung Sejak <?= $bulan; ?> <?= $tahun; ?></p>
-    <?php if( $detail['is_aktif'] > 0): ?>
-    <p class="small">Status : <span class="badge badge-success"> Online </span> <span class="badge badge-warning"> <?= $detail['role']; ?> </span> </p>
-    <?php endif?>
-   <?php if($detail['biografi']) : ?>
-    <div class="card">
-      <div class="card-body">
-        <blockquote class="blockquote small">
-          <!-- <p>Biografi Saya</p> -->
-          <footer class="card-blockquote text-break">
-              <?= $detail['biografi']; ?>
-              <cite title="Source title" class="float-right mt-5 small display-4">~~ <?= $detail['full_name']; ?> ~~</cite>
-            </footer>
-        </blockquote>
-      </div>
-    </div>
-   <?php endif ?>
-   <?php if(!$detail['biografi']|| !$detail['foto_profil']): ?>
-   <div class="alert alert-info alert-dismissible fade show mt-3" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-        <span class="sr-only">Close</span>
-    </button>
-    <strong><?= $_SESSION['log_'] ?></strong> Mohon Lengkapi Profil Anda !! .
-    </div>
-   <?php endif ?>
+        <hr class="my-2">
+        <?php if($gl > 0) : ?>
+        <span class="text-muted mb-2 float-right">Guild : <span class="text-primary"> <i
+                    class="fa fa-check-circle fa-fw" aria-hidden="true"></i> <?= $gl['guild_name'];?> </span> </span>
+        <?php elseif(!$gl) : ?>
+        <span class="badge badge-danger mb-2 float-right">Belum Memiliki Guild</span>
+        <?php endif ?>
+        <p class="small">Bergabung Sejak <?= $bulan; ?> <?= $tahun; ?></p>
+        <?php if( $detail['is_aktif'] > 0): ?>
+        <p class="small">Status : <span class="badge badge-success"> Online </span> <span class="badge badge-warning">
+                <?= $detail['role']; ?> </span> </p>
+        <?php endif?>
+        <?php if($detail['biografi']) : ?>
+        <div class="card">
+            <div class="card-body">
+                <blockquote class="blockquote small">
+                    <!-- <p>Biografi Saya</p> -->
+                    <footer class="card-blockquote text-break">
+                        <?= $detail['biografi']; ?>
+                        <cite title="Source title" class="float-right mt-5 small display-4">~~
+                            <?= $detail['full_name']; ?> ~~</cite>
+                    </footer>
+                </blockquote>
+            </div>
+        </div>
+        <?php endif ?>
+        <?php if(!$detail['biografi']|| !$detail['foto_profil']): ?>
+        <div class="alert alert-info alert-dismissible fade show mt-3" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+            <strong><?= $_SESSION['log_'] ?></strong> Mohon Lengkapi Profil Anda !! .
+        </div>
+        <?php endif ?>
 
-   <div class="card text-center mt-5">
-     <div class="card-body">
-       <h4 class="card-title"><i class="fas fa-birthday-cake fa-2x fa-fw text-primary"></i></h4>
-       <p class="card-text text-dark">Lahir Pada Tanggal <?= $tglLahir; ?> <?= $blnLahir; ?> <?= $thnLahir; ?></p>
-       <?php if($detail['gender'] == '0'): ?>
-       <span class="small"> 
-           <i class="fa fa-venus-mars fa-fw text-primary" aria-hidden="true"></i> Unknown
-        </span>
-    <?php elseif($detail['gender'] == '1'): ?>
-       <span class="small"> 
-           <i class="fa fa-mars-stroke-v fa-fw text-primary" aria-hidden="true"></i> Laki - Laki
-        </span>
-    <?php elseif($detail['gender'] == '2'): ?>
-       <span class="small"> 
-           <i class="fas fa-venus fa-fw text-danger"></i> Perempuan
-        </span>
-       <?php endif ?>
-     </div>
-   </div>
+        <div class="card text-center mt-5">
+            <div class="card-body">
+                <h4 class="card-title"><i class="fas fa-birthday-cake fa-2x fa-fw text-primary"></i></h4>
+                <p class="card-text text-dark">Lahir Pada Tanggal <?= $tglLahir; ?> <?= $blnLahir; ?> <?= $thnLahir; ?>
+                </p>
+                <?php if($detail['gender'] == '0'): ?>
+                <span class="small">
+                    <i class="fa fa-venus-mars fa-fw text-primary" aria-hidden="true"></i> Unknown
+                </span>
+                <?php elseif($detail['gender'] == '1'): ?>
+                <span class="small">
+                    <i class="fa fa-mars-stroke-v fa-fw text-primary" aria-hidden="true"></i> Laki - Laki
+                </span>
+                <?php elseif($detail['gender'] == '2'): ?>
+                <span class="small">
+                    <i class="fas fa-venus fa-fw text-danger"></i> Perempuan
+                </span>
+                <?php endif ?>
+            </div>
+        </div>
 
+    </div>
 </div>
-

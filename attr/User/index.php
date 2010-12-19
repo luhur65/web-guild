@@ -31,6 +31,12 @@ require_once '../temp/auth_header.php';
            case 'editProfile':
              require_once 'profile/edit_user.php';
              break;
+           case 'disable':
+             require_once 'profile/disable.php';
+             break;
+           case 'delete':
+             require_once 'profile/delete.php';
+             break;
            case 'home':
              require_once 'home.php';
              break;

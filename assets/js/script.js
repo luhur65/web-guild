@@ -20,7 +20,7 @@ $(function () {
         
         $.ajax({
             url: 'http://localhost/Praktek/web-guild/attr/User/?mod=likePost&like=' + post,
-            method: 'post',
+            type: 'post',
             data: {
                 post: post
             },
@@ -30,3 +30,44 @@ $(function () {
         })
     });
 });
+
+
+$(function () {
+    
+    $('.nonaktifkanAkun').on('click', function (e) {
+        e.preventDefault()
+
+        const user = $(this).data('user');
+        
+        $.ajax({
+            url: 'http://localhost/Praktek/web-guild/attr/User/?mod=disable&user=' + user,
+            type: 'post',
+            data: {
+                user: user
+            },
+            success: function () {
+                document.location.href = 'http://localhost/Praktek/web-guild/attr/auth_out.php';
+            }
+        })
+    });
+});
+
+$(function () {
+    $('.deleteAkun').on('click', function (e) {
+        e.preventDefault();
+
+        const user = $(this).data('user');
+        
+        $.ajax({
+            url: 'http://localhost/Praktek/web-guild/attr/User/?mod=delete&user=' + user,
+            type: 'post',
+            data: {
+                user: user
+            },
+            success: function (data) {
+                document.location.href = 'http://localhost/Praktek/web-guild/attr/auth_out.php';
+                // console.log(data)
+            }
+        })
+    })
+})
