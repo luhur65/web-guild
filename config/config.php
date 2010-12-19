@@ -650,7 +650,7 @@ function editPost($data)
     $url = $_GET['data'];
 
     $id = base64_decode($url);
-    $post = htmlspecialchars($data['post'],ENT_QUOTES);
+    $post = htmlspecialchars(addslashes(strip_tags(trim($data['post'],' '))),ENT_QUOTES);
     $post = nl2br($post);
 
     mysqli_query($conn, "UPDATE `guild_post` SET `post`='$post' WHERE id_post = '$id'");
