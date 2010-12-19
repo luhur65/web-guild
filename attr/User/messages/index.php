@@ -84,4 +84,4 @@ if ($detail['guild_id'] !== $id) {
 </div>
 
 
-<?php endif;
+<?php endif; ?>

@@ -15,6 +15,14 @@ if (!$_GET['q']) {
     // Data Teman Yg Diundang
     $dataTeman = mysqli_query($conn,"SELECT * FROM guild_info_member WHERE id_user = '$penerima'");
     $teman = mysqli_fetch_assoc($dataTeman);
+
+    // Jika sudah ada guild
+    if ($teman['guild_id'] > 0) {
+        
+        echo showMessage('danger','Gagal',''.$teman['full_name'].' Sudah Memiliki Guild , Tidak Bisa Mengundang Dia');
+
+        return false;
+    }
     
     // Data Guild
     $dataGuild = mysqli_query($conn,"SELECT * FROM guild_center WHERE id_guild = '$idguild'");

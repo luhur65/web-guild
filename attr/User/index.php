@@ -52,6 +52,9 @@ require_once '../temp/auth_header.php';
            case 'editData':
              require_once 'guild/editGuild.php';
              break;
+           case 'listMember':
+             require_once 'guild/listAnggota.php';
+             break;
            case 'guildReport':
              require_once 'guild/reportGuild.php';
              break;

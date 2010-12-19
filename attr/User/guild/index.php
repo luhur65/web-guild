@@ -70,7 +70,7 @@ $queryAdmin = query($admin);
           </button>
           <div class="dropdown-menu" aria-labelledby="triggerId">
             <a class="dropdown-item btn btn-link"
-              href="?mod=listMember&data=<?= base64_encode($gl['guild_name']); ?>"><i class="fas fa-users fa-fw"></i>
+              href="?mod=listMember&data=<?= base64_encode($gl['id_guild']); ?>"><i class="fas fa-users fa-fw"></i>
               List Member</a>
             <?php 
         
