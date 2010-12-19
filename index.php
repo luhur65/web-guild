@@ -1,7 +1,6 @@
 <?php
-
-require_once 'assets/bg-img/bg-masthead.jpg';
-
+require_once 'config/config.php';
+header('Location: '. base_url .'/attr/login');
 
 /**
  * Configurasi Database :
