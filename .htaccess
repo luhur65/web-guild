@@ -1,4 +1,5 @@
 Options -Indexes
+php_flag output_buffering on
 
 # HTID:12249889: DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES BELOW
 php_value display_errors 1
