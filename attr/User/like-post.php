@@ -1,11 +1,9 @@
 <?php 
 
-
 if (likePost() > 0) {
-    echo alertPopUp('Berhasil Like','?mod=home');
+    echo "<script>document.location.href='?mod=home'</script>";
 } else {
-    echo alertPopUp('Gagal Like','?mod=home');
+    echo "<script>document.location.href='?mod=home'</script>";
 }
-
 
 ?>

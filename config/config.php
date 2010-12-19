@@ -731,7 +731,7 @@ function likePost()
     $queryDataLike = mysqli_query($conn, $dataLike);
     $post = mysqli_fetch_assoc($queryDataLike);
     
-    $likeAwal = $post['count_like'];
+    // $likeAwal = $post['count_like'];
 
     // user yg like postingan
     $userLike = $_SESSION['log_'];
@@ -742,7 +742,7 @@ function likePost()
 
     // jml like 
     $like = 1;
-    $like += $likeAwal;
+    // $like += $likeAwal;
 
     // echo $post['id_user_like'];
     // echo $idUserLike;
@@ -750,9 +750,14 @@ function likePost()
     // cek jika ada user yg like lebih dari 2x 
     if($idUserLike === $post['id_user_like']){
 
-        echo alertPopUp('Tidak Bisa Membatalkan Like','?mod=home');
+        $idLike = $post['id_like'];
+
+        $query = "DELETE FROM `data_like_post` WHERE id_user_like = '$idUserLike' and id_like = '$idLike'";
+        mysqli_query($conn, $query);
+
+        // echo alertPopUp('Tidak Bisa Membatalkan Like','?mod=home');
         
-        return false;
+        // return false;
 
     } elseif ($idUserLike !== $post['id_user_like']) {
     
