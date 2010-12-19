@@ -174,9 +174,15 @@ $gl = mysqli_fetch_assoc($saya);
 
         <?php if($detail['id_role'] !== '2') : ?>
         <?php if($us['id_role'] === '2') : ?>
+        <?php if($us['is_aktif'] > 0) : ?>
         <a href="<?= base_url; ?>/attr/Admin/?mod=blockByAdmin&user=<?= base64_encode($us['id_user']); ?>"
             class="btn btn-danger mr-3 btn-sm rounded mb-2 mt-2"><i class="fa fa-ban" aria-hidden="true"></i> Blokir
         </a>
+        <?php else : ?>
+        <a href="<?= base_url; ?>/attr/Admin/?mod=openAccess&user=<?= base64_encode($us['id_user']); ?>"
+            class="btn btn-primary mr-3 btn-sm rounded mb-2 mt-2"><i class="fa fa-check fa-fw" aria-hidden="true"></i> Aktifkan
+        </a>
+        <?php endif; ?>
         <?php endif; ?>
         <?php endif; ?>
 
