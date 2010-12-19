@@ -2,6 +2,16 @@
 
 require_once '../../config/config.php';
 
+// Cek Dulu Role Anggota 
+if ($row['role'] == 'Anggota') {
+    echo "<script>
+    document.location.href = '".base_url."/attr/User'
+  </script>";
+    exit();
+
+    return false;
+}
+
 $id = $_GET['block'];
 
 if (!isset($id)) {

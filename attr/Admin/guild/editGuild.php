@@ -1,5 +1,17 @@
 <?php 
 
+// Cek Dulu Role Anggota 
+if ($row['role'] == 'Anggota') {
+    echo "<script>
+    document.location.href = '".base_url."/attr/User'
+  </script>";
+  exit();
+
+  return false;
+
+}
+
+
 $id = base64_decode($_GET['data']);
 
 $dataGuild = "SELECT * FROM guild_center INNER JOIN guild_info_member ON guild_center.creator = guild_info_member.id_user WHERE guild_center.id_guild = '$id'";

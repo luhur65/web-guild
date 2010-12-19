@@ -5,14 +5,19 @@ session_start();
 // Di folder config
 require_once '../../config/config.php';
 
-// Session Masuk
-$guild_session = $_SESSION['log_'];
 
 // Cek Jika Tidak Ada Session
 if (!isset($_SESSION['log_'])) {
-    // Kembalikan Ke Halaman Login
-    header('Location: ../login');
+  // Kembalikan Ke Halaman Login
+  echo '<script>document.location.href="../login";</script>';
+  exit();
+
+  return false;
 } 
+
+
+// Session Masuk
+$guild_session = $_SESSION['log_'];
 
 // Query Data Info user Dari @Param Session Masuk
 $data_query = "SELECT * FROM guild_info_member INNER JOIN guild_role ON guild_role.id_role = guild_info_member.role WHERE username = '$guild_session' or email = '$guild_session'";
@@ -21,15 +26,16 @@ $query    = mysqli_query($conn,$data_query);
 // Pecah Data User Yg Login
 $detail = mysqli_fetch_assoc($query);
 
+
+// Ambil Data Yg Diperlukan Saja
+$guild_saya =  $detail['guild_id'];
+
 // Cek Apakah Akun aktif Atau belum ?
 if ($detail['is_aktif'] < "1") {
     echo alertPopUp('Akun Anda Telah Diblokir Admin','../auth_out');    
 
     return false;
 }
-
-// Ambil Data Yg Diperlukan Saja
-$guild_saya =  $detail['guild_id'];
 
 // Query List Guild (Join Guild)
 $dataListGuild = "SELECT * FROM guild_center";

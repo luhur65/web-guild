@@ -1,11 +1,14 @@
 <?php
-
 session_start();
 
 // Jika Tidak ADa Session
 if (!isset($_SESSION['log_'])) { 
-    header("Location: login");
-    exit;
+    // Kembalikan Ke Halaman Login
+    echo '<script>document.location.href="login";</script>';
+    exit();
+
+    return false;
+
 // Jika Ada Sesion
 } elseif (isset($_SESSION['log_'])) {
     logActivity($_SESSION['log_'],"Telah LogOut Dari WebGuild");

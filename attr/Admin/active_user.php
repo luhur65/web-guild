@@ -1,5 +1,16 @@
 <?php 
 
+// Cek Dulu Role Anggota 
+if ($row['role'] == 'Anggota') {
+    echo "<script>
+    document.location.href = '".base_url."/attr/User'
+  </script>";
+  exit();
+
+  return false;
+
+}
+
 if (empty($_GET['user'])) {
     
     echo `<div class="alert alert-danger alert-dismissible fade show" role="alert">
