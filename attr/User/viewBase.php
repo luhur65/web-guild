@@ -171,7 +171,7 @@ if (isset($_POST['send'])) {
     <hr class="my-2">
 
     <div class="mb-3 d-sm-flex flex-wrap btn btn-group">
-        <a href="?mod=sendMessage&chat=<?= base64_encode($us['id_user']); ?>" class="btn btn-success mr-3 btn-sm rounded mb-2 mt-2"><i class="fa fa-comments fa-fw" aria-hidden="true"></i> Kirim Pesan </a>
+        <a href="?mod=mail&data=<?= base64_encode($us['id_user']); ?>" class="btn btn-success mr-3 btn-sm rounded mb-2 mt-2"><i class="fa fa-comments fa-fw" aria-hidden="true"></i> Kirim Pesan </a>
         <a href="?mod=reportUser&data=<?= base64_encode($us['full_name']); ?>" class="btn btn-warning mr-3 btn-sm rounded mb-2 mt-2"><i class="fas fa-exclamation-circle fa-fw"></i> Laporkan </a>
         <a href="" class="btn btn-danger mr-3 btn-sm rounded mb-2 mt-2"><i class="fa fa-ban" aria-hidden="true"></i> Blokir </a>
     </div>

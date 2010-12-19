@@ -4887,6 +4887,14 @@ a.badge-dark:focus, a.badge-dark.focus {
   color: inherit;
 }
 
+.alert-dismissible .tutup {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.75rem 1.25rem;
+  color: inherit;
+}
+
 .alert-primary {
   color: #293c74;
   background-color: #dce3f9;
@@ -5408,7 +5416,35 @@ button.close {
   appearance: none;
 }
 
-a.close.disabled {
+.tutup {
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: .5;
+}
+
+.tutup:hover {
+  color: #000;
+  text-decoration: none;
+}
+
+.tutup:not(:disabled):not(.disabled):hover, .tutup:not(:disabled):not(.disabled):focus {
+  opacity: .75;
+}
+
+button.tutup {
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+a.tutup.disabled {
   pointer-events: none;
 }
 
