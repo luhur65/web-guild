@@ -178,7 +178,7 @@ $id = $detail['guild_id'];
 
               ?>
         <!-- Tombol like , comment -->
-        <a href="?mod=likePost&amp;like=<?= base64_encode($p['id_post']) ?>" class="btn btn-light btn-sm text-primary"><i class="fa fa-thumbs-up fa-fw" aria-hidden="true"></i> <?= $like['count_like']; ?> Like</a>
+        <a href="?mod=likePost&amp;like=<?= base64_encode($p['id_post']) ?>" class="btn btn-light btn-sm text-danger"><i class="fa fa-heart fa-fw" aria-hidden="true"></i> <?= $like['count_like']; ?> </a>
         <a href="" class="btn btn-light btn-sm text-primary"><i class="fa fa-comments fa-fw" aria-hidden="true"></i> Comment</a>
 
       </div>
