@@ -69,6 +69,30 @@ $takeOneGuild = query($oneGuild);
 </head>
 
 <body id="page-top">
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v6.0&appId=519308415336449&autoLogAppEvents=1"></script>
+
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '519308415336449',
+      xfbml      : true,
+      version    : 'v6.0'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
 <!-- Page Wrapper -->
 <?php foreach($query as $row): ?>
 <div id="wrapper">

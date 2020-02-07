@@ -11,6 +11,7 @@ if ($row['role'] == 'Anggota') {
 ?>
   
 <div class="container-fluid">
+
   <?php 
   if (isset($_SESSION['log_'])) {
   
