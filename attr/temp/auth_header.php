@@ -52,21 +52,27 @@ $takeOneGuild = query($oneGuild);
   <link rel="icon" href="<?= base_url ?>/assets/img/favicon.png">
 
   <!-- Custom fonts for this template-->
-  <link href="<?= base_url;?>/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link
+    href="<?= base_url;?>/assets/vendor/fontawesome-free/css/all.min.css"
+    rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Quicksand:400,600&display=swap" rel="stylesheet">
   <link
     href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
     rel="stylesheet">
 
   <!-- Argon CSS -->
-  <!-- <link type="text/css" href="<?= base_url; ?>/assets/css/argon.css?v=1.1.0" rel="stylesheet"> -->
+  <!-- <link type="text/css" href="<?= base_url; ?>/assets/css/argon.css?v=1.1.0"
+  rel="stylesheet"> -->
 
   <!-- Custom styles for this template-->
-  <link href="<?= base_url;?>/assets/css/sb-admin-2.css" rel="stylesheet">
+  <link href="<?= base_url;?>/assets/css/sb-admin-2.css"
+    rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="<?= base_url;?>/assets/css/style.css" rel="stylesheet">
   <!-- Lightbox -->
-  <link href="<?= base_url;?>/assets/vendor/lightbox/css/lightbox.min.css" rel="stylesheet">
+  <link
+    href="<?= base_url;?>/assets/vendor/lightbox/css/lightbox.min.css"
+    rel="stylesheet">
 
 </head>
 
@@ -120,8 +126,10 @@ $takeOneGuild = query($oneGuild);
       <?php foreach($tampilkanSubMenu as $sub) : ?>
 
       <li class="nav-item">
-        <a class="nav-link pb-0" href="?mod=<?= $sub['url'] ?>">
-          <i class="<?= $sub['icon']; ?> fa-fw" aria-hidden="true"></i>
+        <a class="nav-link pb-0"
+          href="?mod=<?= $sub['url'] ?>">
+          <i class="<?= $sub['icon']; ?> fa-fw"
+            aria-hidden="true"></i>
           <span><?= $sub['title'] ?></span></a>
       </li>
 
@@ -169,19 +177,23 @@ $takeOneGuild = query($oneGuild);
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <!-- <h6 class="collapse-header"></h6> -->
-            <a class="collapse-item text-info" href="?mod=viewMyGuildID&idGuild=<?= base64_encode($g['id_guild']); ?>">
+            <a class="collapse-item text-info"
+              href="?mod=viewMyGuildID&idGuild=<?= base64_encode($g['id_guild']); ?>">
               <i class="fa fa-eye fa-fw" aria-hidden="true"></i> Lihat Guild
             </a>
-            <a class="collapse-item text-primary" href="?mod=sendMessage&guild=<?= base64_encode($g['id_guild']);?>'">
+            <a class="collapse-item text-primary"
+              href="?mod=sendMessage&guild=<?= base64_encode($g['id_guild']);?>'">
               <i class="fas fa-comments fa-fw"></i> Guild Chat
             </a>
             <a class="collapse-item text-primary" href="?mod=undangTeman">
               <i class="fas fa-user-friends fa-fw"></i> Undang Teman
             </a>
-            <a class="collapse-item text-danger" href="?mod=getOutFromGuild&user=<?= $g['id_user']; ?>">
+            <a class="collapse-item text-danger"
+              href="?mod=getOutFromGuild&user=<?= $g['id_user']; ?>">
               <i class="fas fa-sign-out-alt fa-fw"></i> Keluar dari Guild
             </a>
-            <a class="collapse-item text-danger" href="?mod=guildReport&guild=<?= base64_encode($g['id_guild']) ?>">
+            <a class="collapse-item text-danger"
+              href="?mod=guildReport&guild=<?= base64_encode($g['id_guild']) ?>">
               <i class="fa fa-exclamation-triangle fa-fw" aria-hidden="true"></i> Laporkan Guild
             </a>
           </div>
@@ -196,7 +208,8 @@ $takeOneGuild = query($oneGuild);
       <?php endif ?>
 
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url; ?>/attr/auth_out" data-toggle="modal" data-target="#logoutModal">
+        <a class="nav-link" href="<?= base_url; ?>/attr/auth_out"
+          data-toggle="modal" data-target="#logoutModal">
           <i class="fas fa-fw fa-sign-out-alt"></i>
           <span>Log Out</span></a>
       </li>
@@ -277,7 +290,8 @@ $takeOneGuild = query($oneGuild);
                   href="?mod=seeDetail&data=<?= base64_encode($ar['id_report']); ?>">
                   <div class="dropdown-list-image mr-3">
                     <img class="rounded-circle img-anggota img-fluid img-responsive"
-                      src="<?= base_url; ?>/assets/img/user-icon/<?= $ar['foto_profil']; ?>" alt="Profil">
+                      src="<?= base_url; ?>/assets/img/user-icon/<?= $ar['foto_profil']; ?>"
+                      alt="Profil">
                   </div>
                   <div class="font-weight-bold">
                     <div class="text-truncate">Saya Mengirim Sebuah Report</div>
@@ -293,38 +307,13 @@ $takeOneGuild = query($oneGuild);
                     </div>
                   </div>
                   <div>
-                    <div class="small text-info"><?= $ar['full_name']; ?></div>
+                    <div class="small text-info"><?= $ar['full_name']; ?>
+                    </div>
                     Report Ini Sudah Di FeedBack
                   </div>
                 </a>
                 <?php endif ?>
                 <?php endforeach ?>
-              </div>
-            </li>
-
-            <!-- Nav Item - Messages -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-envelope fa-fw"></i>
-                <!-- Counter - Messages -->
-                <span class="badge badge-danger badge-counter">43535</span>
-              </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                aria-labelledby="messagesDropdown">
-                <h6 class="dropdown-header">
-                  Pesan
-                </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
-                  </div>
-                  <div class="font-weight-bold">
-                    <div class="text-truncate">Bagi Source Code Web ini dong gan ??? </div>
-                    <div class="small text-gray-500">Dharma · 2020-01-05</div>
-                  </div>
-                </a>
               </div>
             </li>
 
@@ -376,38 +365,10 @@ $takeOneGuild = query($oneGuild);
                 </a>
                 <?php endforeach ?>
                 <a class="dropdown-item text-center small text-danger btn btn-link"
-                  href="?mod=deleteAllNotif&data-user=<?= $alert['user_id']; ?>"><i class="fas fa-trash-alt fa-fw"></i>
+                  href="?mod=deleteAllNotif&data-user=<?= $alert['user_id']; ?>"><i
+                    class="fas fa-trash-alt fa-fw"></i>
                   Hapus Semua Pesan</a>
                 <?php endif ?>
-              </div>
-            </li>
-
-            <!-- Nav Item - Messages -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-envelope fa-fw"></i>
-                <!-- Counter - Messages -->
-                <span class="badge badge-danger badge-counter">7</span>
-              </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                aria-labelledby="messagesDropdown">
-                <h6 class="dropdown-header">
-                  Message Center
-                </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
-                    <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div class="font-weight-bold">
-                    <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been
-                      having.</div>
-                    <div class="small text-gray-500">Emily Fowler · 58m</div>
-                  </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
               </div>
             </li>
 
@@ -415,15 +376,23 @@ $takeOneGuild = query($oneGuild);
             <div class="topbar-divider d-none d-sm-block"></div>
 
 
+              <?php 
+              // Penerima
+              $receive = $detail['id_user'];
 
+              // list Message
+              $dataMessage = "SELECT * FROM guild_chat WHERE guild_chat.to_user = '$receive'";
+              $queryCount = count(query($dataMessage));
 
+              ?>
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-lg-inline text-gray-600 small"><?= $detail['full_name']; ?></span>
-                <img class="img-profile rounded-circle" src="../../assets/img/user-icon/<?= $detail['foto_profil'] ?>"
+                <img class="img-profile rounded-circle"
+                  src="../../assets/img/user-icon/<?= $detail['foto_profil'] ?>"
                   alt="Profil Saya">
               </a>
               <!-- Dropdown - User Information -->
@@ -433,8 +402,17 @@ $takeOneGuild = query($oneGuild);
                   Profile
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="<?= base_url; ?>/attr/auth_out" data-toggle="modal"
-                  data-target="#logoutModal">
+                <a class="dropdown-item" href="?mod=listMail" id="mail">
+                  <i class="fas fa-envelope fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Message 
+                  <?php if($queryCount > 0) : ?>
+                    <span class="badge badge-danger badge-counter"><?= $queryCount; ?></span>
+                  <?php endif; ?>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item"
+                  href="<?= base_url; ?>/attr/auth_out"
+                  data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>

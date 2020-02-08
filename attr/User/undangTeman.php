@@ -6,7 +6,7 @@ $friends = "SELECT * FROM guild_info_member";
 
 if (isset($_POST['ok'])) {
     
-    $inviteFriend = inviteFriend($_POST['search']);
+    $friends = inviteFriend($_POST['search']);
 }
 
 ?>
@@ -28,8 +28,8 @@ if (isset($_POST['ok'])) {
 
 <!-- List Teman  -->
 <?php if(isset($_POST['ok'])) :?>
-    <?php foreach($inviteFriend as $f) : ?>
-    <a class="dropdown-item d-flex align-items-center col-lg-5" href="?mod=viewUser&q=<?= base64_encode($f['full_name'])?>">
+    <?php foreach($friends as $f) : ?>
+    <a class="dropdown-item d-flex align-items-center col-lg-5" href="?mod=invite&q=<?= base64_encode($f['id_user'])?>">
         <div class="dropdown-list-image mr-3">
             <img class="rounded-circle img-thumbnail" src="<?= base_url; ?>/assets/img/user-icon/<?= $f['foto_profil']; ?>" alt="">
         </div>

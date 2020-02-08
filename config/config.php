@@ -367,7 +367,7 @@ function setPassword($data)
 
 
     // Enkrysip Password 
-    $password = password_hash($pass,PASSWORD_DEFAULT);
+    $password = base64_encode($pass);
 
     mysqli_query($conn, "UPDATE `guild_center` SET `guild_pass`= '$password' WHERE id_guild = '$id'");
 
@@ -626,48 +626,6 @@ function deleteReport($data)
     $fromUserId = base64_decode($_GET['data']);
 
     mysqli_query($conn, "DELETE FROM `report_user` WHERE from_user = '$fromUserId'");
-
-    return mysqli_affected_rows($conn);
-}
-
-// Fitur Chatting
-function onlineChat($data)
-{
-    global $conn;
-
-    $pengirim = $data['saya'];
-    $kepada = $data['kepada'];
-    $tglKirim = date("Y-m-d H:i:s a");
-    $balas = 0;
-
-    // Mengambil Isi Pesan 
-    $pesanAsli = htmlspecialchars(strip_tags(stripslashes($data['isi'])),ENT_QUOTES);
-
-    // Enkrypsi Pesan Secara End-to-End
-    $enPesan = base64_encode($pesanAsli);
-
-    mysqli_query($conn, "INSERT INTO `guild_chat`(`id_chat`, `pengirim`, `message`, `to_user`, `date`, `replying`) VALUES (null,'$pengirim','$enPesan','$kepada','$tglKirim','$balas')");
-
-    return mysqli_affected_rows($conn);
-}
-
-// Fitur Balas Chatting
-function replyChat($data)
-{
-    global $conn;
-
-    $pengirim = $data['saya'];
-    $kepada = $data['kepada'];
-    $tglKirim = date("Y-m-d H:i:s a");
-    $balas = 0;
-
-    // Mengambil Isi Pesan 
-    $pesanAsli = htmlspecialchars(strip_tags(stripslashes($data['isi'])),ENT_QUOTES);
-
-    // Enkrypsi Pesan Secara End-to-End
-    $enPesan = base64_encode($pesanAsli);
-
-    mysqli_query($conn, "INSERT INTO `reply_chat`(`id_reply`, `from_me`, `reply_message`, `to_you`, `date_reply`, `is_read`) VALUES (null,'$pengirim','$enPesan','$kepada','$tglKirim','$balas')");
 
     return mysqli_affected_rows($conn);
 }
