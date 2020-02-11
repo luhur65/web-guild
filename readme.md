@@ -1,17 +1,24 @@
 # Web Guild 
+
 **By : [Dharma Bakti Situmorang](https://facebook.com/adiknya.situmorang)**
 
 **Web Ini Menggunakan :**
+
 1. Bahasa Pemograman `PHP v7.1.19`
+   
 2. `Template Admin Dasboard` Dari : 
    1. [Start Bootstrap - SB Admin 2 v4.0.7](https://startbootstrap.com/template-overviews/sb-admin-2)
+   
 3. `Template Login / Register` Dari:
    1. [Argon Design System - v1.1.0](https://www.creative-tim.com/product/argon-design-system)
+   
 4. Framework CSS :
    1. [Bootstrap v4.3.1](https://getbootstrap.com/)
       1. [jQuery JavaScript Library v3.4.1](https://jquery.com/)
+   
 5. `Font Awesome` Untuk Icon :
    1. [Font Awesome Free 5.10.2](https://fontawesome.com)
+   
 6. `Lightbox` by Lokesh Dhakar:
    1. [Lightbox v2.11.1](http://lokeshdhakar.com/projects/lightbox2/)
    
