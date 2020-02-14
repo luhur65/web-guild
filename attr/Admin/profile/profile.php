@@ -75,6 +75,7 @@ switch ($pecah['1']) {
     <p class="small">Status : <span class="badge badge-success"> Online </span> <span class="badge badge-info"> <?= $detail['role']; ?> </span> </p>
     <?php endif?>
 
+<div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
 
    <?php if($detail['biografi']) : ?>
    <div class="card p-4 shadow border-0 text-dark">
@@ -95,5 +96,7 @@ switch ($pecah['1']) {
    <?php endif ?>
 
 </div>
+
+<div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="" data-numposts="5"></div>
 
 

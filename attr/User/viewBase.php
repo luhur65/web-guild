@@ -38,18 +38,21 @@ if ($usr != $us['full_name']) {
 
 <div class="card shadow p-3 col-lg-6 mb-5 mx-auto mt-2 rounded" aria-hidden="true">
     <div class="d-sm-flex mb-2 flex-wrap">
-    <?php if($us['foto_profil'] > 0) : ?>
-    <a href="<?= base_url; ?>/assets/img/user-icon/<?= $us['foto_profil']?>" class="example-image-link" data-lightbox="example-image" data-title="<?= $us['full_name'] ?>">
-    <img src="<?= base_url; ?>/assets/img/user-icon/<?= $us['foto_profil']?>" alt="Profil Saya" class="example-image img-profile rounded-circle">
-    </a>
-    <?php endif ?>
-    <h2 class="h3 mx-3 text-primary"><?= $us['full_name']; ?>
-    <p class="lead text-dark display-5"><?= substr($us['email'],0,-4) ?>
-</p>
-</h2>
+        <?php if($us['foto_profil'] > 0) : ?>
+        <a href="<?= base_url; ?>/assets/img/user-icon/<?= $us['foto_profil']?>"
+            class="example-image-link" data-lightbox="example-image"
+            data-title="<?= $us['full_name'] ?>">
+            <img src="<?= base_url; ?>/assets/img/user-icon/<?= $us['foto_profil']?>"
+                alt="Profil Saya" class="example-image img-profile rounded-circle">
+        </a>
+        <?php endif ?>
+        <h2 class="h3 mx-3 text-primary"><?= $us['full_name']; ?>
+            <p class="lead text-dark display-5"><?= substr($us['email'],0,-4) ?>
+            </p>
+        </h2>
     </div>
 
-<?php 
+    <?php 
 
 // String Tanggal Yg Akan Dipecah
 $join = $us['tgl_join'];
@@ -157,69 +160,72 @@ $saya = mysqli_query($conn,$guildSaya);
 
 $gl = mysqli_fetch_assoc($saya);
 
-// Mengirim Pesan
-if (isset($_POST['send'])) {
-    if (onlineChat($_POST) > 0) {
-        echo alertPopUp('Pesan Anda Terkirim','?mod=logChatting');
-    } else {
-        echo showMessage('danger','Gagal Terkirim','Pesan Anda Tidak Bisa Terkirim');
-    }
-}
 ?>
 
 
     <hr class="my-2">
 
     <div class="mb-3 d-sm-flex flex-wrap btn btn-group">
-        <a href="?mod=sendMessage&chat=<?= base64_encode($us['id_user']); ?>" class="btn btn-success mr-3 btn-sm rounded mb-2 mt-2"><i class="fa fa-comments fa-fw" aria-hidden="true"></i> Kirim Pesan </a>
-        <a href="?mod=reportUser&data=<?= base64_encode($us['full_name']); ?>" class="btn btn-warning mr-3 btn-sm rounded mb-2 mt-2"><i class="fas fa-exclamation-circle fa-fw"></i> Laporkan </a>
-        <a href="" class="btn btn-danger mr-3 btn-sm rounded mb-2 mt-2"><i class="fa fa-ban" aria-hidden="true"></i> Blokir </a>
+        <a href="?mod=mail&data=<?= base64_encode($us['id_user']); ?>"
+            class="btn btn-info mr-3 btn-sm rounded mb-2 mt-2"><i class="fa fa-comments fa-fw"
+                aria-hidden="true"></i> Kirim Pesan </a>
+        <a href="?mod=reportUser&data=<?= base64_encode($us['full_name']); ?>"
+            class="btn btn-warning mr-3 btn-sm rounded mb-2 mt-2"><i class="fas fa-exclamation-circle fa-fw"></i>
+            Laporkan </a>
+
+        <?php if($detail['role'] === 1) : ?>
+            <a href="" class="btn btn-danger mr-3 btn-sm rounded mb-2 mt-2"><i class="fa fa-ban" aria-hidden="true"></i> Blokir </a>
+        <?php endif; ?>
+
     </div>
 
     <?php if($gl > 0) : ?>
-        <span class="text-muted mb-2 float-right">Guild : <span class="text-primary"> <i class="fa fa-check-circle fa-fw" aria-hidden="true"></i> <?= $gl['guild_name'];?> </span> </span>
-    <?php elseif(!$gl) : ?>
+        <span class="text-muted mb-2 float-right">Guild : <span class="text-primary"> <i
+                    class="fa fa-check-circle fa-fw" aria-hidden="true"></i> <?= $gl['guild_name'];?> </span> </span>
+        <?php elseif(!$gl) : ?>
         <span class="badge badge-danger mb-2 float-right">Belum Memiliki Guild</span>
-    <?php endif ?>
+        <?php endif ?>
 
-    <p class="small">Bergabung Sejak <?= $bulan; ?> <?= $tahun; ?></p>
+        <p class="small">Bergabung Sejak <?= $bulan; ?> <?= $tahun; ?>
+        </p>
 
-    <?php if( $us['is_aktif'] > 0): ?>
+        <?php if( $us['is_aktif'] > 0): ?>
         <p class="small">
-        Status : <span class="badge badge-success"> <?= $us['role']; ?> </span>
+            Status : <span class="badge badge-success"> <?= $us['role']; ?> </span>
 
-        <?php if($us['gender'] == '0'): ?>
-       <span class="small"> 
-           <i class="fa fa-venus-mars fa-fw text-primary" aria-hidden="true"></i> Unknown
-        </span>
-    <?php elseif($us['gender'] == '1'): ?>
-       <span class="small"> 
-           <i class="fa fa-mars-stroke-v fa-fw text-primary" aria-hidden="true"></i> Laki - Laki
-        </span>
-    <?php elseif($us['gender'] == '2'): ?>
-       <span class="small"> 
-           <i class="fas fa-venus fa-fw text-danger"></i> Perempuan
-        </span>
-       <?php endif ?>
+            <?php if($us['gender'] == '0'): ?>
+            <span class="small">
+                <i class="fa fa-venus-mars fa-fw text-primary" aria-hidden="true"></i> Unknown
+            </span>
+            <?php elseif($us['gender'] == '1'): ?>
+            <span class="small">
+                <i class="fa fa-mars-stroke-v fa-fw text-primary" aria-hidden="true"></i> Laki - Laki
+            </span>
+            <?php elseif($us['gender'] == '2'): ?>
+            <span class="small">
+                <i class="fas fa-venus fa-fw text-danger"></i> Perempuan
+            </span>
+            <?php endif ?>
 
         </p>
 
-    <?php endif?>
+        <?php endif?>
 
-   <?php if($us['biografi']) : ?>
-    <div class="card small">
-      <div class="card-body">
-        <blockquote class="blockquote">
-          <p>Biografi</p>
-          <hr class="bg-secondary">
-          <footer class="card-blockquote">
-              <p class="small"><?= $us['biografi']; ?></p>
-              <cite title="Source title" class="float-right mt-5 small display-4">~~ <?= $us['full_name']; ?> ~~</cite>
-            </footer>
-        </blockquote>
-      </div>
+        <?php if($us['biografi']) : ?>
+        <div class="card small">
+            <div class="card-body">
+                <blockquote class="blockquote">
+                    <p>Biografi</p>
+                    <hr class="bg-secondary">
+                    <footer class="card-blockquote">
+                        <p class="small"><?= $us['biografi']; ?>
+                        </p>
+                        <cite title="Source title" class="float-right mt-5 small display-4">~~ <?= $us['full_name']; ?>
+                            ~~</cite>
+                    </footer>
+                </blockquote>
+            </div>
+        </div>
+        <?php endif ?>
+
     </div>
-   <?php endif ?>
-
-</div>
-

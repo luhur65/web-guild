@@ -9,6 +9,13 @@ $guildSaya = mysqli_query($conn,$dataGuild);
 
 $gl = mysqli_fetch_assoc($guildSaya);
 
+// Jika Guild Di block oleh Admin
+if ($gl['guild_aktif'] < 1) {
+    echo showMessage('danger','Blocked','Kami Memblokir Guild Ini Untuk Sementara Waktu Sampai Masa Waktu Yg Telah Kami Tentukan Sendiri!!, Terima Kasih');
+
+    return false;
+}
+
 // mengambil Profil User Guild
 // Sebanyak 5 user
 $profilUser = "SELECT * FROM guild_info_member JOIN guild_center ON guild_center.id_guild = guild_info_member.guild_id WHERE guild_info_member.guild_id = '$id' LIMIT 5";

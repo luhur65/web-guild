@@ -362,12 +362,12 @@ function setPassword($data)
     // Set password Untuk Guild Private
     $id = base64_decode($_GET['data']);
 
-    $pass = mysqli_real_escape_string($conn, $data['pass']);
-    $confirm = mysqli_real_escape_string($conn, $data['pass2']);
+    $pass = htmlspecialchars($data['pass'],ENT_QUOTES);
+    $confirm = htmlspecialchars($data['pass2'], ENT_QUOTES);
 
 
     // Enkrysip Password 
-    $password = password_hash($pass,PASSWORD_DEFAULT);
+    $password = base64_encode($pass);
 
     mysqli_query($conn, "UPDATE `guild_center` SET `guild_pass`= '$password' WHERE id_guild = '$id'");
 
@@ -387,13 +387,27 @@ function joinToGuild($data)
         
         mysqli_query($conn, $query);
 
-        return mysqli_affected_rows($conn);
+    return mysqli_affected_rows($conn);
 
+}
+
+// Function Delete Invitation
+function ignoreInvite($data)
+{
+    global $conn;
+
+    $idPesan = $data['idPesan'];
+
+    mysqli_query($conn, "DELETE FROM `guild_chat` WHERE id_invite = $idPesan");
+
+    return mysqli_affected_rows($conn);
+    
 }
 
 // Function Undang Teman
 function inviteFriend($data)
 {
+    $id = 0;
     $query = "SELECT * FROM guild_info_member WHERE
                             id_user LIKE '%$data%' OR
                             full_name LIKE '%$data%' OR 
@@ -480,6 +494,32 @@ function editAllData($data)
          
      } 
 
+}
+
+// Function blocked guild
+function blockGuild($data)
+{
+    global $conn;
+
+    $id = base64_decode($_GET['data']);
+    $aktif = 0;
+
+    mysqli_query($conn, "UPDATE `guild_center` SET `guild_aktif`= '$aktif' WHERE id_guild = '$id'");
+
+    return mysqli_affected_rows($conn);
+}
+
+// Function blocked guild
+function aktifkan($data)
+{
+    global $conn;
+
+    $id = base64_decode($_GET['data']);
+    $aktif = 1;
+
+    mysqli_query($conn, "UPDATE `guild_center` SET `guild_aktif`= '$aktif' WHERE id_guild = '$id'");
+
+    return mysqli_affected_rows($conn);
 }
 
 // Delete Guild
@@ -630,44 +670,14 @@ function deleteReport($data)
     return mysqli_affected_rows($conn);
 }
 
-// Fitur Chatting
-function onlineChat($data)
+// Function Hapus Report
+function delreGuild($data)
 {
     global $conn;
 
-    $pengirim = $data['saya'];
-    $kepada = $data['kepada'];
-    $tglKirim = date("Y-m-d H:i:s a");
-    $balas = 0;
+    $idReport = $_GET['data'];
 
-    // Mengambil Isi Pesan 
-    $pesanAsli = htmlspecialchars(strip_tags(stripslashes($data['isi'])),ENT_QUOTES);
-
-    // Enkrypsi Pesan Secara End-to-End
-    $enPesan = base64_encode($pesanAsli);
-
-    mysqli_query($conn, "INSERT INTO `guild_chat`(`id_chat`, `pengirim`, `message`, `to_user`, `date`, `replying`) VALUES (null,'$pengirim','$enPesan','$kepada','$tglKirim','$balas')");
-
-    return mysqli_affected_rows($conn);
-}
-
-// Fitur Balas Chatting
-function replyChat($data)
-{
-    global $conn;
-
-    $pengirim = $data['saya'];
-    $kepada = $data['kepada'];
-    $tglKirim = date("Y-m-d H:i:s a");
-    $balas = 0;
-
-    // Mengambil Isi Pesan 
-    $pesanAsli = htmlspecialchars(strip_tags(stripslashes($data['isi'])),ENT_QUOTES);
-
-    // Enkrypsi Pesan Secara End-to-End
-    $enPesan = base64_encode($pesanAsli);
-
-    mysqli_query($conn, "INSERT INTO `reply_chat`(`id_reply`, `from_me`, `reply_message`, `to_you`, `date_reply`, `is_read`) VALUES (null,'$pengirim','$enPesan','$kepada','$tglKirim','$balas')");
+    mysqli_query($conn, "DELETE FROM `report_guild` WHERE id_report_guild = '$idReport'");
 
     return mysqli_affected_rows($conn);
 }

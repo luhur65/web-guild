@@ -31,18 +31,27 @@ $query    = query($data_query);
         <?php if($listGuild['guild_aktif'] < 1): ?>
 
         <p class="small">
-          <span class="badge badge-danger">Server Blocked</span>
+          <span class="badge badge-danger">Guild Blocked</span>
         </p>
 
         <?php endif ?>
         <p class="card-text"><?= $listGuild['guild_info'] ?></p>
       </div>
       <div class="card-footer">
-        <a href="?mod=editData&data=<?= base64_encode($listGuild['id_guild']); ?>" class="btn btn-info btn-sm">
+        <a href="?mod=editData&data=<?= base64_encode($listGuild['id_guild']); ?>" class="btn btn-info btn-sm mb-2">
           <i class="fas fa-edit fa-fw"></i> Edit
         </a>
+        <?php if($listGuild['guild_aktif'] > 0)  :?>
+          <a href="?mod=blockGuild&data=<?= base64_encode($listGuild['id_guild']); ?>" class="btn btn-warning btn-sm mb-2">
+          <i class="fa fa-ban fa-fw" aria-hidden="true"></i> Block
+        </a>
+        <?php elseif($listGuild['guild_aktif'] < 1)  :?>
+          <a href="?mod=activated&data=<?= base64_encode($listGuild['id_guild']); ?>" class="btn btn-success btn-sm mb-2">
+          <i class="fa fa-check-circle fa-fw" aria-hidden="true"></i> Aktif
+        </a>
+        <?php endif; ?>
         <a href="?mod=deleteGuildFromlist&data-guild=<?= base64_encode($listGuild['id_guild']); ?>"
-          class="btn btn-danger btn-sm" onclick="return confirm('Anda Yakin')">
+          class="btn btn-danger btn-sm mb-2" onclick="return confirm('Anda Yakin')">
           <i class="fas fa-trash-alt fa-fw"></i> Delete
         </a>
 

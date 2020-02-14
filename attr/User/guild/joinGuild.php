@@ -2,7 +2,7 @@
 
 // List Guild ( Dibuat oleh Admin )
 // Membuat daftar guild
-$semuaGuild = "SELECT * FROM guild_center WHERE guild_post = 'Public'";
+$semuaGuild = "SELECT * FROM guild_center WHERE guild_post = 'Public' And guild_aktif = 1";
 
 // Query Semua Daftar Guild Untuk Join
 $join = query($semuaGuild);

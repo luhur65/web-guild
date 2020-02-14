@@ -11,6 +11,7 @@ if ($row['role'] == 'Anggota') {
 ?>
   
 <div class="container-fluid">
+
   <?php 
   if (isset($_SESSION['log_'])) {
   
@@ -32,6 +33,12 @@ if ($row['role'] == 'Anggota') {
              break;
            case 'editData':
              require_once 'guild/editGuild.php';
+             break;
+           case 'blockGuild':
+             require_once 'guild/action.php';
+             break;
+           case 'activated':
+             require_once 'guild/action.php';
              break;
            case 'deleteGuildFromlist':
              require_once 'guild/delete.php';
@@ -59,6 +66,12 @@ if ($row['role'] == 'Anggota') {
              break;
            case 'deleteRp':
              require_once 'report/deleted.php';
+             break;
+           case 'delReportGuild':
+             require_once 'report/deleteReportGuild.php';
+             break;
+           case 'rdGui':
+             require_once 'report/guildRead.php';
              break;
            
            default:

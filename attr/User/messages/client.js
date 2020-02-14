@@ -22,7 +22,7 @@ function getContent(timestamp){
                 // put the data_from_file into #response
                  $('#response').append(`
                  <div class="alert alert-light fade show alert-dismissible" role="alert">
-                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                 <button type="button" class="tutup" data-dismiss="alert" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 			  </button>
                  <h5 class="alert-heading font-weight-bold text-primary">` +obj.data_from_file.name + `</h5>

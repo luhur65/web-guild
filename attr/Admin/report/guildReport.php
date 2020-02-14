@@ -13,7 +13,7 @@ $queryListReport = query($listReport);
 </div>
 <hr class="bg-dark">
 
-<div class="card mx-auto col-lg-7 shadow">
+<div class="card mx-auto col-lg-8 shadow">
 <table class="table table-striped table-inverse table-responsive text-center p-3">
     <thead class="thead-inverse">
         <tr>
@@ -27,16 +27,17 @@ $queryListReport = query($listReport);
         <tbody>
             <?php foreach($queryListReport as $l) :?>
             <tr>
-                <td><img src="<?= base_url; ?>/assets/img/guild_img/<?= $l['guild_img']; ?>" class="img-fluid img-thumbnail" alt=""></td>
-                <td><a href=""><?= $l['guild_name']; ?></a></td>
-                <td><a href=""><?= $l['full_name']; ?></a></td>
+                <td><img src="<?= base_url; ?>/assets/img/guild_img/<?= $l['guild_img']; ?>" class="img-fluid img-thumbnail" alt="Banner Guild"></td>
+                <td><a href="<?= base_url; ?>/attr/User/?mod=viewMyGuildID&idGuild=<?= base64_encode($l['id_guild']); ?>"><?= $l['guild_name']; ?></a></td>
+                <td><a href="<?= base_url; ?>/attr/User/?mod=viewUser&q=<?= base64_encode($l['full_name']) ?>"><?= $l['full_name']; ?></a></td>
                 <td>
-                    <a href="" class="btn btn-danger btn-sm">
+                    <a href="?mod=delReportGuild&data=<?= $l['id_report_guild']; ?>" 
+                    class="btn btn-danger btn-sm">
                         <i class="fas fa-trash fa-fw fa-2x"></i>
                     </a>
                 </td>
                 <td>
-                    <a href="" class="btn btn-link">
+                    <a href="?mod=rdGui&data=<?= $l['id_report_guild']; ?>" class="btn btn-link">
                         <i class="fa fa-link fa-fw" aria-hidden="true"></i> Read More
                     </a>
                 </td>
