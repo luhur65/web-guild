@@ -3,8 +3,8 @@ require_once '../temp/auth_header.php';
 
 ?>
 
-  <div class="container-fluid">
-    <?php 
+<div class="container-fluid">
+  <?php 
   if (isset($_SESSION['log_'])) {
       if (isset($_GET['mod'])) {
          $mod = $_GET['mod'];
@@ -15,6 +15,9 @@ require_once '../temp/auth_header.php';
              break;
            case 'listMail':
              require_once 'maillist.php';
+             break;
+           case 'mail':
+             require_once 'chat.php';
              break;
            case 'readMail':
              require_once 'readMail.php';
@@ -91,25 +94,25 @@ require_once '../temp/auth_header.php';
   }
 
   ?>
-  </div>
+</div>
 
 
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-outline-danger" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary"
-            href="<?= base_url; ?>/attr/auth_out">Logout</a>
-        </div>
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+      </div>
+      <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+      <div class="modal-footer">
+        <button class="btn btn-outline-danger" type="button" data-dismiss="modal">Cancel</button>
+        <a class="btn btn-primary"
+          href="<?= base_url; ?>/attr/auth_out">Logout</a>
       </div>
     </div>
   </div>
+</div>
 
-  <?php require_once '../temp/auth_footer.php' ?>
+<?php require_once '../temp/auth_footer.php'  ?>

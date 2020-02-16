@@ -210,6 +210,42 @@ function editProfil($data)
 
 }
 
+// Funtion Blockir akun user
+function blockAccessUser($data)
+{
+    global $conn;
+
+    // id user yg ingin diblok 
+    $id = base64_decode($_GET['user']);
+
+    $block = 0;
+
+    $query = "UPDATE `guild_info_member` SET `is_aktif`= '$block' WHERE id_user = '$id'";
+
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn); 
+    
+}
+
+// Funtion Activated Akun User
+function openAccessuser($data)
+{
+    global $conn;
+
+    // id user yg ingin diblok 
+    $id = base64_decode($_GET['user']);
+
+    $aktifkan = 1;
+
+    $query = "UPDATE `guild_info_member` SET `is_aktif`= '$aktifkan' WHERE id_user = '$id'";
+
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+
+}
+
 // Function Tambah Menu
 function tambahMenu($data)
 {
@@ -678,6 +714,32 @@ function delreGuild($data)
     $idReport = $_GET['data'];
 
     mysqli_query($conn, "DELETE FROM `report_guild` WHERE id_report_guild = '$idReport'");
+
+    return mysqli_affected_rows($conn);
+}
+
+
+// Function Chatting Private User
+function replyChat($data)
+{
+    global $conn;
+
+    $penerima = base64_decode($_GET['data']);
+    $pengirim = $data['sender'];
+    $idChat = $data['idChat'];
+
+    // Isi Chatting
+
+    // 1.Validasi Isi Chat
+    $textValidate = htmlspecialchars(addslashes(stripslashes($data['chat'])),ENT_QUOTES);
+
+    // 2.Encoding / Enkripsikan Pesan Agar Aman
+    $chat = base64_encode($textValidate);
+
+    // Masukkan Semua Ke Database
+    $query = "INSERT INTO `reply_user_chat`(`id_reply`, `id_chat`, `to_user`, `reply_isi_chat`, `penerima`) VALUES (null, '$idChat', '$penerima', '$chat', '$pengirim')";
+
+    mysqli_query($conn,$query);
 
     return mysqli_affected_rows($conn);
 }

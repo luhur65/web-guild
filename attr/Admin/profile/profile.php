@@ -4,7 +4,7 @@
     <span class="text-muted small"><?= date('l , d M Y') ?></span>
 </div>
 <hr class="bg-dark">
-<div class="jumbotron col-lg-8 mx-auto mt-3" id="userDropdown">
+<div class="card p-3 shadow rounded col-lg-8 mt-3" id="userDropdown">
     <div class="d-inline-flex align-items-center justify-content-start mb-4 text-primary">
     <?php if($detail['foto_profil'] > 0) : ?>
     <img src="<?= base_url ?>/assets/img/user-icon/<?= $detail['foto_profil']?>" alt="Profil Saya" class="img-profile rounded-circle img-fluid">

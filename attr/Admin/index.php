@@ -25,6 +25,12 @@ if ($row['role'] == 'Anggota') {
            case 'editProfile':
              require_once 'profile/edit_user.php';
              break;
+           case 'blockByAdmin':
+             require_once 'block_user.php';
+             break;
+           case 'openAccess':
+             require_once 'active_user.php';
+             break;
            case 'home':
              require_once 'home.php';
              break;

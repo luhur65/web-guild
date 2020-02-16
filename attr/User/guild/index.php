@@ -66,7 +66,7 @@ $queryAdmin = query($admin);
               class="fas fa-sign-out-alt" aria-hidden="true"></i> Keluar</a>
           <button class="btn btn-info btn-sm dropdown-toggle mb-3" type="button" id="triggerId" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-exclamation-circle fa-fw"></i> Info Lainnya
+            <i class="fas fa-exclamation-circle fa-fw"></i> Lainnya
           </button>
           <div class="dropdown-menu" aria-labelledby="triggerId">
             <a class="dropdown-item btn btn-link"
@@ -220,7 +220,12 @@ $queryAdmin = query($admin);
     <div class="card mt-5 shadow ">
       <div class="card-header bg-gradient">
         <img src="<?= base_url; ?>/assets/img/user-icon/<?= $p['foto_profil']; ?>"
-          class="img-fluid img-anggota rounded-circle"> <?= $p['full_name']; ?>
+          class="img-fluid img-anggota rounded-circle"> 
+          <?php if($detail['id_user'] === $p['id_user']) : ?>
+          <?= $p['full_name']; ?>
+          <?php else : ?>
+          <a href="?mod=viewUser&q=<?= base64_encode($p['full_name'])?>"><?= $p['full_name']; ?></a>
+          <?php endif; ?>
       </div>
       <div class="card-body">
         <?php  if($p['guild_id'] != $p['id_guild']) : ?> <p class="small"> <span class="badge badge-danger">
