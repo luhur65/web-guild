@@ -614,7 +614,7 @@ function sendMyPost($data)
     $idUser = $data['idUser'];
     $idGuild = $data['idGuild'];
     $post = htmlspecialchars(strip_tags($data['post']),ENT_QUOTES);
-    $date = date("Y-m-d H:i:s a");
+    $date = date("Y-m-d");
 
     mysqli_query($conn, "INSERT INTO `guild_post`(`id_post`, `post`, `user_id`, `id_guild`, `post_date`) VALUES (null,'$post','$idUser','$idGuild','$date')");
 
@@ -752,7 +752,7 @@ function logActivity($session, $text)
     $file = fopen('log.txt', 'a+');
 
     // tulisan log
-    $log = "[".date('d/M/Y')."][".date('H : i : s a')."] ". $session ." ". $text ."[Done]<br>\n";
+    $log = "[".date('d/M/Y')."] ### [".date('H : i : s a')."] ### ". $session ." ### ". $text ." ### Done\n";
 
     // Tulis ke dalam file log.txt
     fwrite($file, $log);

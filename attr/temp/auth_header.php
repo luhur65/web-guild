@@ -36,7 +36,7 @@ $dataListGuild = "SELECT * FROM guild_center";
 $listGuild = query($dataListGuild);
 
 // Query List Guild (  Guild Saya )
-$oneGuild = "SELECT * FROM guild_center INNER JOIN guild_info_member ON guild_center.id_guild = guild_info_member.guild_id WHERE guild_id = '$guild_saya' and username = '$guild_session'";
+$oneGuild = "SELECT * FROM guild_center INNER JOIN guild_info_member ON guild_center.id_guild = guild_info_member.guild_id WHERE guild_id = '$guild_saya' and username = '$guild_session' or email = '$guild_session'";
 $takeOneGuild = query($oneGuild);
 
 ?>
