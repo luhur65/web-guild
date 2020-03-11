@@ -53,6 +53,10 @@
                         <dd class="col-sm-8">'. $bagian[0] .'</dd>
                         <dt class="col-sm-4">Waktu</dt>
                         <dd class="col-sm-8">'. $bagian[1] .'</dd>
+                        <dt class="col-sm-4">Access</dt>
+                        <dd class="col-sm-8">'. $_SERVER['HTTP_USER_AGENT'] .' </dd>
+                        <dt class="col-sm-4">Alamat IP</dt>
+                        <dd class="col-sm-8">'. $_SERVER['REMOTE_ADDR'] .' </dd>
                         <dt class="col-sm-4">User</dt>
                         <dd class="col-sm-8"><img src="'. base_url .'/assets/img/user-icon/'. $usr['foto_profil'] .'" class="img-fluid img-anggota mr-1" alt="">'. $usr['full_name'] .'</dd>
                         <dt class="col-sm-4">Info</dt>

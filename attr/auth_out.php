@@ -25,7 +25,7 @@ function logActivity($session, $text)
     $file = fopen('log.txt', 'a+');
 
     // tulisan log
-    $log = "[".date('d/M/Y')."] ### [".date('H : i : s a')."] ### ". $session ." ### ". $text ." ### Done\n";
+    $log = "".date('l, d M Y')." ### ".date('H : i : s a')." ### ". $session ." ### ". $text ." ### Done\n";
 
     // Tulis ke dalam file log.txt
     fwrite($file, $log);
