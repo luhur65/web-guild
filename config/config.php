@@ -670,6 +670,8 @@ function deletePost($data)
 
     // delete like ketika postingan yg dilike dihapus
     mysqli_query($conn, "DELETE FROM `data_like_post` WHERE id_post_like = '$id'");
+    // delete semua comment 
+    mysqli_query($conn, "DELETE FROM `data_comment` WHERE id_comment_post = '$id'");
     // delete postingan
     mysqli_query($conn, "DELETE FROM `guild_post` WHERE id_post = '$id'");
 
@@ -787,7 +789,7 @@ function likePost()
         $id = mysqli_fetch_assoc($queryDataLike);
         $idLike = $id['id_like'];
         
-        // cek jika ada user yg like lebih dari 2x di postingan yg sama
+        // cek jika ada user yg like lebih dari 1x di postingan yg sama
         if ($idUserLike === $id['id_user_like']) {
 
             // membatalkan like jika user sudah pernah memberikan like di postingan yg sama
@@ -819,7 +821,7 @@ function comment($data)
     global $conn;
 
     // id postingan yg dikomentari
-    $post = base64_decode($_GET['post']);
+    $post = base64_decode($_GET['data']);
 
     // user yg berkomenter
     $user = $_SESSION['log_'];

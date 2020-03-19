@@ -56,11 +56,11 @@ $takeOneGuild = query($oneGuild);
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="X-UA-Compatible" content="IE=7">
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-  <meta name="keywords" content="Awesome Guild">
+  <meta name="keywords" content="Awesome Guild, Chatting, Connect With your world, guild, projects, trend 2020, squad , resse squad, barbar">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="og:Web Chatting" property="og:Chatting With Your Friends" content="Web Chatting">
   <meta name="robots" content="noindex , nofollow">
-  <meta name="description" content="Web Chatting Made In Indonesia">
+  <meta name="description" content="Official Guild Website :: Resse Squad">
   <meta name="author" content="dhrm_stmrng">
 
   <title>Beranda Saya</title>

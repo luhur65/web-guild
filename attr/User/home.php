@@ -205,7 +205,7 @@ $id = $detail['guild_id'];
         <?php endif; ?>
 
 
-        <a href="?mod=comment&amp;post=<?= base64_encode($p['id_post']); ?>" class="btn btn-link text-primary mb-0 btn-sm"><i class="fa fa-comments fa-fw" aria-hidden="true"></i>
+        <a href="?mod=seeMore&amp;data=<?= base64_encode($p['id_post']) ?>" class="btn btn-link text-primary mb-0 btn-sm"><i class="fa fa-comments fa-fw" aria-hidden="true"></i>
           Comment</a>
         <!-- akhir dari like, comment -->
       </div>

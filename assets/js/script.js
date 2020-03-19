@@ -95,3 +95,38 @@ $(function () {
         });
     });
 });
+
+
+// Comment Pop up
+$(function () {
+
+    $('.form-comment').hide();
+    
+    $('.comment-pop').on('click', function (e) {
+        e.preventDefault();
+        
+        const form = $('.form-comment').show();
+
+        form.html(`
+        <div class="card mt-2">
+        <div class="card-body">
+            <form action="" method="post">
+                <div class="form-group">
+                    <label for="comment">
+                        <h5 class="text-dark">Comments Public</h5>
+                    </label>
+                    <textarea class="form-control" name="comment" id="comment" rows="2"
+                        placeholder="type your comments ..."></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-sm col-lg-6" name="send">
+                        <i class="fa fa-paper-plane fa-fw" aria-hidden="true"></i>
+                        Kirim!
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>`);
+
+    });
+});

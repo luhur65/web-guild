@@ -88,9 +88,6 @@ require_once '../temp/auth_header.php';
            case 'likePost':
              require_once 'like-post.php';
              break;
-           case 'comment':
-             require_once 'comment-post.php';
-             break;
            case 'read':
              require_once 'readNotif.php';
              break;
