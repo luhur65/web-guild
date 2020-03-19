@@ -135,11 +135,11 @@ $submenu = query("SELECT * FROM `sub_menu` ");
           </td>
           <td>
             <?php if($a['is_aktif'] > 0) : ?>
-            <a href="?mod=blockByAdmin&amp;user=<?= base64_encode($a['id_user']) ?>" class="btn btn-danger btn-sm rounded">
+            <a href="&amp;Kamu%20Tertipu%20hahahaha" class="btn btn-danger btn-sm rounded blockir" data-user="<?= base64_encode($a['id_user']) ?>">
               <i class="fa fa-ban fa-fw" aria-hidden="true"></i> Blokir
             </a>
             <?php elseif($a['is_aktif'] < 1) : ?>
-            <a href="?mod=openAccess&amp;user=<?= base64_encode($a['id_user']) ?>" class="btn btn-primary btn-sm rounded">
+            <a href="&amp;Kamu%20Tertipu%20hahaha" class="btn btn-primary btn-sm rounded aktifkan" data-user="<?= base64_encode($a['id_user']) ?>">
               <i class="fas fa-user-check fa-fw"></i> Aktifkan
             </a>
             <?php endif; ?>

@@ -101,10 +101,10 @@ $(function () {
 $(function () {
 
     $('.form-comment').hide();
-    
+
     $('.comment-pop').on('click', function (e) {
         e.preventDefault();
-        
+
         const form = $('.form-comment').show();
 
         form.html(`
@@ -128,5 +128,47 @@ $(function () {
         </div>
     </div>`);
 
+    });
+});
+
+
+$(function () {
+
+    // blockir user oleh admin
+    $('.blockir').on('click', function (e) {
+        e.preventDefault();
+
+        const user = $(this).data('user');
+
+        $.ajax({
+            url: 'http://localhost/Praktek/web-guild/attr/Admin/?mod=blockByAdmin&user=' + user,
+            type: 'post',
+            data: {
+                user: user
+            },
+            success: function () {
+                alert('Berhasil Diblockir!');
+                document.location.href = '';
+            }
+        });
+    });
+
+    // aktifkan user oleh admin
+    $('.aktifkan').on('click', function (e) {
+        e.preventDefault();
+
+        const user = $(this).data('user');
+
+        $.ajax({
+            url: 'http://localhost/Praktek/web-guild/attr/Admin/?mod=openAccess&user=' + user,
+            type: 'post',
+            data: {
+                user: user
+            },
+            success: function () {
+                alert('Berhasil Diaktifkan Kembali!');
+                document.location.href = '';
+            }
+        });
     });
 });

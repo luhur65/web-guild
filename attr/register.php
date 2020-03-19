@@ -121,9 +121,6 @@
               </div>
             </div>
             <div class="row mt-3">
-              <!-- <div class="col-6">
-                <a href="#" class="text-light"><small>Forgot password?</small></a> 
-              </div> -->
               <div class="col-6">
                 <a href="<?= base_url; ?>/attr/login" class="text-white"><small>&larr; Kembali Ke Halaman Login</small></a>
               </div>
