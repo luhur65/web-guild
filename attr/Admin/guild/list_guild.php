@@ -38,39 +38,46 @@ $query    = query($data_query);
         <p class="card-text"><?= $listGuild['guild_info'] ?></p>
 
         <?php if($listGuild['guild_post'] === 'Public'): ?>
-          
-          <span class="text-success">Group <?= $listGuild['guild_post']; ?></span> <br>
 
-          <a href="<?= base_url; ?>/attr/User/?mod=viewUser&q=<?= base64_encode($listGuild['full_name']) ?>" class="btn btn-link btn-sm rounded"><i class="fas fa-user-shield fa-fw"></i> <?= $listGuild['full_name']; ?></a>
+        <span class="text-success">Group <?= $listGuild['guild_post']; ?></span> <br>
 
-          <?php elseif($listGuild['guild_post'] === 'Private'): ?>
+        <a href="<?= base_url; ?>/attr/User/?mod=viewUser&q=<?= base64_encode($listGuild['full_name']) ?>"
+          class="btn btn-link btn-sm rounded"><i class="fas fa-user-shield fa-fw"></i>
+          <?= $listGuild['full_name']; ?></a>
 
-            <span class="text-danger">Group <?= $listGuild['guild_post']; ?></span> <br>
+        <?php elseif($listGuild['guild_post'] === 'Private'): ?>
 
-            <a href="<?= base_url; ?>/attr/User/?mod=viewUser&q=<?= base64_encode($listGuild['full_name']) ?>" class="btn btn-link btn-sm rounded"><i class="fas fa-user-shield fa-fw"></i> <?= $listGuild['full_name']; ?></a>
+        <span class="text-danger">Group <?= $listGuild['guild_post']; ?></span> <br>
 
-      <?php endif ?>
+        <a href="<?= base_url; ?>/attr/User/?mod=viewUser&q=<?= base64_encode($listGuild['full_name']) ?>"
+          class="btn btn-link btn-sm rounded"><i class="fas fa-user-shield fa-fw"></i>
+          <?= $listGuild['full_name']; ?></a>
+
+        <?php endif ?>
 
       </div>
       <div class="card-footer">
-        <a href="<?= base_url; ?>/attr/User/?mod=viewMyGuildID&idGuild=<?= base64_encode($listGuild['id_guild']); ?>" class="btn btn-primary mb-2 btn-circle">
+        <a href="<?= base_url; ?>/attr/User/?mod=viewMyGuildID&idGuild=<?= base64_encode($listGuild['id_guild']); ?>"
+          class="btn btn-primary mb-2 btn-circle">
           <i class="fa fa-eye fa-fw" aria-hidden="true"></i>
         </a>
-        
-        <a href="?mod=editData&data=<?= base64_encode($listGuild['id_guild']); ?>" class="btn btn-info mb-2 btn-circle" onclick="return confirm('Anda Yakin Ingin Mengedit Data Guild Ini ??')">
+
+        <a href="?mod=editData&data=<?= base64_encode($listGuild['id_guild']); ?>" class="btn btn-info mb-2 btn-circle"
+          onclick="return confirm('Anda Yakin Ingin Mengedit Data Guild Ini ??')">
           <i class="fas fa-edit fa-fw"></i>
         </a>
         <?php if($listGuild['guild_aktif'] > 0)  :?>
-          <a href="?mod=blockGuild&data=<?= base64_encode($listGuild['id_guild']); ?>" class="btn btn-warning mb-2 btn-circle" onclick="return confirm('Anda Yakin Ingin Memblokir Guild Ini ??')">
-          <i class="fa fa-ban fa-fw" aria-hidden="true"></i> 
+        <a href="" class="btn btn-warning mb-2 btn-circle blockirGuild"
+          data-guild="<?= base64_encode($listGuild['id_guild']); ?>">
+          <i class="fa fa-ban fa-fw" aria-hidden="true"></i>
         </a>
         <?php elseif($listGuild['guild_aktif'] < 1)  :?>
-          <a href="?mod=activated&data=<?= base64_encode($listGuild['id_guild']); ?>" class="btn btn-success mb-2 btn-circle" onclick="return confirm('Kembali Mengaktifkan guild Ini ??')">
-          <i class="fa fa-check-circle fa-fw" aria-hidden="true"></i> 
+        <a href="" class="btn btn-success mb-2 btn-circle aktifkanGuild"
+          data-guild="<?= base64_encode($listGuild['id_guild']); ?>">
+          <i class="fa fa-check-circle fa-fw" aria-hidden="true"></i>
         </a>
         <?php endif; ?>
-        <a href="?mod=deleteGuildFromlist&data-guild=<?= base64_encode($listGuild['id_guild']); ?>"
-          class="btn btn-danger mb-2 btn-circle" onclick="return confirm('Anda Yakin Ingin Menghapus Guild Ini ??')">
+        <a href="?mod=deleteGuildFromlist&data-guild=<?= base64_encode($listGuild['id_guild']); ?>" class="btn btn-danger mb-2 btn-circle hapusGuild"> 
           <i class="fas fa-trash-alt fa-fw"></i>
         </a>
 

@@ -23,6 +23,9 @@
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url;?>/assets/vendor/lightbox/js/lightbox-plus-jquery.min.js"></script>
 
+<!-- Sweetalert2 -->
+<script src="<?= base_url;?>/assets/vendor/sweetalert2/sweetalert2.all.min.js"></script>
+
 <!-- my script -->
 <script src="<?= base_url;?>/assets/js/script.js"></script>
 

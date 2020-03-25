@@ -473,7 +473,6 @@ function ignoreInvite($data)
 // Function Undang Teman
 function inviteFriend($data)
 {
-    $id = 0;
     $query = "SELECT * FROM guild_info_member WHERE
                             id_user LIKE '%$data%' OR
                             full_name LIKE '%$data%' OR 
@@ -610,15 +609,18 @@ function deleteMyGuild($data)
     unlink('../../assets/img/guild_img/' . $dataGambar);
 
     // Set guild_id 0 untuk Semua Member guild Yg Masih ada
-    $memberGuild = mysqli_query($conn,"SELECT * FROM guild_info_member WHERE guild_id = '$id'");
-    $takeUser = mysqli_fetch_assoc($memberGuild);
-
-    $idUser = $takeUser['id_user'];
-
-    // Update Id Guild Yg Baru
-    $newId = 0;
-    $user = "UPDATE guild_info_member SET guild_id = '$newId' WHERE id_user = '$idUser'";
-    mysqli_query($conn,$user);
+    $memberGuild = query("SELECT * FROM guild_info_member WHERE guild_id = '$id'");
+    
+    foreach ($memberGuild as $mbr) {
+        
+        // id user
+        $idUser = $mbr['id_user'];
+    
+        // Update Id Guild Yg Baru
+        $newId = 0;
+        $user = "UPDATE guild_info_member SET guild_id = '$newId' WHERE id_user = '$idUser'";
+        mysqli_query($conn,$user);
+    }
 
     // Hapus Guildnya
     mysqli_query($conn, "DELETE FROM `guild_center` WHERE id_guild = '$id'");

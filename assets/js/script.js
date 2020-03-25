@@ -11,6 +11,8 @@ $(document).ready(function () {
     });
 });
 
+
+
 // tombol-like
 $(function () {
 
@@ -70,8 +72,31 @@ $(function () {
                 subMenu: subMenu
             },
             success: function () {
-                alert('Berhasil Mengaktifkan Submenu!');
-                document.location.href = '?mod=settingSubMenu';
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil!',
+                    text: 'Submenu Telah Aktif kembali!',
+                    confirmButtonText: 'Ok',
+                }).then((result) => {
+                    if (result.value == true) {
+                        // reload halaman
+                        document.location.href = '';
+                    }
+                });
+
+            },
+            error: function () {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal!',
+                    text: 'Submenu gagal diaktifkan kembali!',
+                    confirmButtonText: 'Ok',
+                }).then((result) => {
+                    if (result.value == true) {
+                        // reload halaman
+                        document.location.href = '';
+                    }
+                });
             }
         });
     });
@@ -89,8 +114,30 @@ $(function () {
                 subMenu: subMenu
             },
             success: function () {
-                alert('Berhasil Memblokir Submenu!');
-                document.location.href = '?mod=settingSubMenu';
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil!',
+                    text: 'Submenu Telah Dinonaktifkan!',
+                    confirmButtonText: 'Ok',
+                }).then((result) => {
+                    if (result.value == true) {
+                        // reload halaman
+                        document.location.href = '';
+                    }
+                });
+            },
+            error: function () {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal!',
+                    text: 'Submenu Gagal Dinonaktifkan!',
+                    confirmButtonText: 'Ok',
+                }).then((result) => {
+                    if (result.value == true) {
+                        // reload halaman
+                        document.location.href = '';
+                    }
+                });
             }
         });
     });
@@ -147,8 +194,17 @@ $(function () {
                 user: user
             },
             success: function () {
-                alert('Berhasil Diblockir!');
-                document.location.href = '';
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Diblockir!',
+                    text: 'User Berhasil DiBlockir!',
+                    confirmButtonText: 'Ok',
+                }).then((result) => {
+                    if (result.value == true) {
+                        // reload halaman
+                        document.location.href = '';
+                    }
+                });
             }
         });
     });
@@ -166,9 +222,169 @@ $(function () {
                 user: user
             },
             success: function () {
-                alert('Berhasil Diaktifkan Kembali!');
-                document.location.href = '';
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Diaktifkan!',
+                    text: 'User Telah Aktif kembali!',
+                    confirmButtonText: 'Ok',
+                }).then((result) => {
+                    if (result.value == true) {
+                        // reload halaman
+                        document.location.href = '';
+                    }
+                });
+            },
+            error: function () {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops ...!',
+                    text: 'Ada Kesalahan , Gagal!',
+                    confirmButtonText: 'Ok',
+                }).then((result) => {
+                    if (result.value == true) {
+                        // reload halaman
+                        document.location.href = '';
+                    }
+                });
             }
         });
+    });
+});
+
+
+// Admin - Management guild
+// Block , Aktifkan & Delete
+$(function () {
+
+    // Blokir
+    $('.blockirGuild').on('click', function (e) {
+        e.preventDefault();
+
+        const guild = $(this).data('guild');
+
+        $.ajax({
+            url: 'http://localhost/Praktek/web-guild/attr/Admin/?mod=blockGuild&data=' + guild,
+            type: 'post',
+            data: {
+                guild: guild
+            },
+            success: function () {
+                // Sweeatalert
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Diblokir!',
+                    text: 'Guild Berhasil Diblockir',
+                    confirmButtonText: 'Ok'
+                }).then((result) => {
+                    if (result.value == true) {
+                        document.location.href = '';
+                    }
+
+                });
+            },
+            error: function () {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal!',
+                    text: 'Guild Gagal Diblockir!',
+                    confirmButtonText: 'Ok'
+                }).then((result) => {
+                    if (result.value == true) {
+                        document.location.href = '';
+                    }
+                });
+            }
+        })
+    });
+
+
+    // Aktifkan
+    $('.aktifkanGuild').on('click', function (e) {
+        e.preventDefault();
+
+        const guild = $(this).data('guild');
+
+        $.ajax({
+            url: 'http://localhost/Praktek/web-guild/attr/Admin/?mod=activated&data=' + guild,
+            type: 'post',
+            data: {
+                guild: guild
+            },
+            success: function () {
+                // Sweeatalert
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Diaktifkan!',
+                    text: 'Guild Berhasil Diaktifkan kembali!',
+                    confirmButtonText: 'Ok',
+                }).then((result) => {
+                    if (result.value == true) {
+                        document.location.href = '';
+                    }
+
+                });
+            },
+            error: function () {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal!',
+                    text: 'Guild Gagal Diaktifkan!',
+                    confirmButtonText: 'Ok'
+                }).then((result) => {
+                    if (result.value == true) {
+                        document.location.href = '';
+                    }
+                });
+            }
+        })
+
+    });
+
+
+    // Delete 
+    $('.hapusGuild').on('click', function (e) {
+        e.preventDefault();
+
+        const href = $(this).attr('href');
+
+        Swal.fire({
+            title: 'Admin Yakin ??',
+            text: 'Data guild tidak bisa dikembalikan lagi',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Hapus!'
+        }).then((result) => {
+            if (result.value) {
+                document.location.href = href;
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil!',
+                    confirmButtonText: 'Ok'
+                }).then((result) => {
+                    if (result.value) {
+                        document.location.href = '?mod=viewGuild';
+                    }
+                })
+            }
+        })
+    });
+
+});
+
+
+// Undang Teman
+$(function () {
+
+    // event ketika keyword ditulis
+    $('.keyword').on('keyup', function () {
+
+        const key = $('.keyword').val();
+
+        if (key !== null) {
+            $('.teman').load('http://localhost/Praktek/web-guild/attr/User/data/data_teman.php?data=' + key);
+        } 
+
     });
 });
