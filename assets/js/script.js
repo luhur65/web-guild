@@ -374,6 +374,42 @@ $(function () {
 });
 
 
+// keluar guild
+$(function () {
+    $('#outGuild').on('click', function (e) {
+        e.preventDefault();
+
+        const href = $(this).attr('href');
+
+        Swal.fire({
+            title: 'Anda Yakin ??',
+            text: 'Semua data yg berkaitan dengan guild ini akan dihapus!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Keluar!'
+        }).then((result) => {
+            if (result.value) {
+                document.location.href = href;
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil!',
+                    confirmButtonText: 'Ok'
+                }).then((result) => {
+                    if (result.value) {
+                        document.location.href = '?mod=Home';
+                    }
+                })
+            }
+        })
+
+
+    })
+});
+
+
 // Undang Teman
 $(function () {
 
@@ -382,9 +418,7 @@ $(function () {
 
         const key = $('.keyword').val();
 
-        if (key !== null) {
-            $('.teman').load('http://localhost/Praktek/web-guild/attr/User/data/data_teman.php?data=' + key);
-        } 
+        $('.teman').load('http://localhost/Praktek/web-guild/attr/User/data/data_teman.php?data=' + key);
 
     });
 });

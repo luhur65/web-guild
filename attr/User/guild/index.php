@@ -62,7 +62,7 @@ $queryAdmin = query($admin);
         <div class="dropdown mt-3 btn">
           <a href="?mod=undangTeman" class="btn btn-primary btn-sm mb-3"> <i class="fas fa-user-plus fa-fw"></i> Ajak
             Teman</a>
-          <a href="?mod=getOutFromGuild&user=<?= $detail['id_user'];?>" class="btn btn-danger btn-sm mb-3"><i
+          <a href="?mod=getOutFromGuild&user=<?= $detail['id_user'];?>" class="btn btn-danger btn-sm mb-3" id="outGuild"><i
               class="fas fa-sign-out-alt" aria-hidden="true"></i> Keluar</a>
           <button class="btn btn-info btn-sm dropdown-toggle mb-3" type="button" id="triggerId" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
